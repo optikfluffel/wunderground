@@ -3,16 +3,7 @@ defmodule Wunderground do
   Documentation for Wunderground.
   """
 
-  @doc """
-  Hello world.
+  alias Wunderground.CurrentConditions
 
-  ## Examples
-
-      iex> Wunderground.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  defdelegate current_conditions(query), to: CurrentConditions, as: :get
 end
