@@ -1,0 +1,31 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "http://api.wunderground.com/api/<<wunderground_api_key>>/conditions/q/60290.json"
+    },
+    "response": {
+      "body": "\n{\n  \"response\": {\n  \"version\":\"0.1\",\n  \"termsofService\":\"http://www.wunderground.com/weather/api/d/terms.html\",\n  \"features\": {\n  \"conditions\": 1\n  }\n\t}\n  ,\t\"current_observation\": {\n\t\t\"image\": {\n\t\t\"url\":\"http://icons.wxug.com/graphics/wu2/logo_130x80.png\",\n\t\t\"title\":\"Weather Underground\",\n\t\t\"link\":\"http://www.wunderground.com\"\n\t\t},\n\t\t\"display_location\": {\n\t\t\"full\":\"Chicago, IL\",\n\t\t\"city\":\"Chicago\",\n\t\t\"state\":\"IL\",\n\t\t\"state_name\":\"Illinois\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"zip\":\"60290\",\n\t\t\"magic\":\"1\",\n\t\t\"wmo\":\"99999\",\n\t\t\"latitude\":\"41.95999908\",\n\t\t\"longitude\":\"-87.87999725\",\n\t\t\"elevation\":\"198.4\"\n\t\t},\n\t\t\"observation_location\": {\n\t\t\"full\":\"George Street, Franklin Park, Illinois\",\n\t\t\"city\":\"George Street, Franklin Park\",\n\t\t\"state\":\"Illinois\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"latitude\":\"41.935368\",\n\t\t\"longitude\":\"-87.880905\",\n\t\t\"elevation\":\"656 ft\"\n\t\t},\n\t\t\"estimated\": {\n\t\t},\n\t\t\"station_id\":\"KILFRANK2\",\n\t\t\"observation_time\":\"Last Updated on August 22, 3:30 PM CDT\",\n\t\t\"observation_time_rfc822\":\"Tue, 22 Aug 2017 15:30:24 -0500\",\n\t\t\"observation_epoch\":\"1503433824\",\n\t\t\"local_time_rfc822\":\"Tue, 22 Aug 2017 15:42:14 -0500\",\n\t\t\"local_epoch\":\"1503434534\",\n\t\t\"local_tz_short\":\"CDT\",\n\t\t\"local_tz_long\":\"America/Chicago\",\n\t\t\"local_tz_offset\":\"-0500\",\n\t\t\"weather\":\"Scattered Clouds\",\n\t\t\"temperature_string\":\"81.7 F (27.6 C)\",\n\t\t\"temp_f\":81.7,\n\t\t\"temp_c\":27.6,\n\t\t\"relative_humidity\":\"51%\",\n\t\t\"wind_string\":\"From the NW at 1.9 MPH Gusting to 7.5 MPH\",\n\t\t\"wind_dir\":\"NW\",\n\t\t\"wind_degrees\":313,\n\t\t\"wind_mph\":1.9,\n\t\t\"wind_gust_mph\":\"7.5\",\n\t\t\"wind_kph\":3.1,\n\t\t\"wind_gust_kph\":\"12.1\",\n\t\t\"pressure_mb\":\"1012\",\n\t\t\"pressure_in\":\"29.88\",\n\t\t\"pressure_trend\":\"-\",\n\t\t\"dewpoint_string\":\"62 F (17 C)\",\n\t\t\"dewpoint_f\":62,\n\t\t\"dewpoint_c\":17,\n\t\t\"heat_index_string\":\"83 F (28 C)\",\n\t\t\"heat_index_f\":83,\n\t\t\"heat_index_c\":28,\n\t\t\"windchill_string\":\"NA\",\n\t\t\"windchill_f\":\"NA\",\n\t\t\"windchill_c\":\"NA\",\n\t\t\"feelslike_string\":\"83 F (28 C)\",\n\t\t\"feelslike_f\":\"83\",\n\t\t\"feelslike_c\":\"28\",\n\t\t\"visibility_mi\":\"10.0\",\n\t\t\"visibility_km\":\"16.1\",\n\t\t\"solarradiation\":\"--\",\n\t\t\"UV\":\"6\",\"precip_1hr_string\":\"-999.00 in ( 0 mm)\",\n\t\t\"precip_1hr_in\":\"-999.00\",\n\t\t\"precip_1hr_metric\":\" 0\",\n\t\t\"precip_today_string\":\"0.01 in (0 mm)\",\n\t\t\"precip_today_in\":\"0.01\",\n\t\t\"precip_today_metric\":\"0\",\n\t\t\"icon\":\"partlycloudy\",\n\t\t\"icon_url\":\"http://icons.wxug.com/i/c/k/partlycloudy.gif\",\n\t\t\"forecast_url\":\"http://www.wunderground.com/US/IL/Chicago.html\",\n\t\t\"history_url\":\"http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KILFRANK2\",\n\t\t\"ob_url\":\"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=41.935368,-87.880905\",\n\t\t\"nowcast\":\"\"\n\t}\n}\n",
+      "headers": {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=UTF-8",
+        "Last-Modified": "Tue, 22 Aug 2017 20:42:14 GMT",
+        "Server": "Apache/2.2.15 (CentOS)",
+        "X-CreationTime": "0.080",
+        "Expires": "Tue, 22 Aug 2017 20:42:14 GMT",
+        "Cache-Control": "max-age=0, no-cache",
+        "Pragma": "no-cache",
+        "Date": "Tue, 22 Aug 2017 20:42:14 GMT",
+        "Content-Length": "2639",
+        "Connection": "keep-alive"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

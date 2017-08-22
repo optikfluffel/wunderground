@@ -1,0 +1,31 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "http://api.wunderground.com/api/<<wunderground_api_key>>/conditions/q/AIRUBFOURZEGBNUIZDSNGIUZFV.json"
+    },
+    "response": {
+      "body": "\n{\n  \"response\": {\n  \"version\":\"0.1\",\n  \"termsofService\":\"http://www.wunderground.com/weather/api/d/terms.html\",\n  \"features\": {\n  \"conditions\": 1\n  }\n\t\t,\n\t\"error\": {\n\t\t\"type\": \"querynotfound\"\n\t\t,\"description\": \"No cities match your search query\"\n\t}\n\t}\n}\n",
+      "headers": {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=UTF-8",
+        "Last-Modified": "Tue, 22 Aug 2017 20:42:14 GMT",
+        "Server": "Apache/2.2.15 (CentOS)",
+        "X-CreationTime": "0.017",
+        "Expires": "Tue, 22 Aug 2017 20:42:14 GMT",
+        "Cache-Control": "max-age=0, no-cache",
+        "Pragma": "no-cache",
+        "Date": "Tue, 22 Aug 2017 20:42:14 GMT",
+        "Content-Length": "255",
+        "Connection": "keep-alive"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

@@ -1,0 +1,31 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "http://api.wunderground.com/api/<<wunderground_api_key>>/conditions/q/KJFK.json"
+    },
+    "response": {
+      "body": "\n{\n  \"response\": {\n  \"version\":\"0.1\",\n  \"termsofService\":\"http://www.wunderground.com/weather/api/d/terms.html\",\n  \"features\": {\n  \"conditions\": 1\n  }\n\t}\n  ,\t\"current_observation\": {\n\t\t\"image\": {\n\t\t\"url\":\"http://icons.wxug.com/graphics/wu2/logo_130x80.png\",\n\t\t\"title\":\"Weather Underground\",\n\t\t\"link\":\"http://www.wunderground.com\"\n\t\t},\n\t\t\"display_location\": {\n\t\t\"full\":\"Kennedy International, NY\",\n\t\t\"city\":\"Kennedy International\",\n\t\t\"state\":\"NY\",\n\t\t\"state_name\":\"New York\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"zip\":\"11430\",\n\t\t\"magic\":\"6\",\n\t\t\"wmo\":\"99999\",\n\t\t\"latitude\":\"40.63972092\",\n\t\t\"longitude\":\"-73.77889252\",\n\t\t\"elevation\":\"3.0\"\n\t\t},\n\t\t\"observation_location\": {\n\t\t\"full\":\"New York JFK, New York\",\n\t\t\"city\":\"New York JFK\",\n\t\t\"state\":\"New York\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"latitude\":\"40.63999939\",\n\t\t\"longitude\":\"-73.77999878\",\n\t\t\"elevation\":\"10 ft\"\n\t\t},\n\t\t\"estimated\": {\n\t\t},\n\t\t\"station_id\":\"KJFK\",\n\t\t\"observation_time\":\"Last Updated on August 22, 3:51 PM EDT\",\n\t\t\"observation_time_rfc822\":\"Tue, 22 Aug 2017 15:51:00 -0400\",\n\t\t\"observation_epoch\":\"1503431460\",\n\t\t\"local_time_rfc822\":\"Tue, 22 Aug 2017 16:42:16 -0400\",\n\t\t\"local_epoch\":\"1503434536\",\n\t\t\"local_tz_short\":\"EDT\",\n\t\t\"local_tz_long\":\"America/New_York\",\n\t\t\"local_tz_offset\":\"-0400\",\n\t\t\"weather\":\"Partly Cloudy\",\n\t\t\"temperature_string\":\"84 F (29 C)\",\n\t\t\"temp_f\":84,\n\t\t\"temp_c\":29,\n\t\t\"relative_humidity\":\"79%\",\n\t\t\"wind_string\":\"From the South at 22 MPH\",\n\t\t\"wind_dir\":\"South\",\n\t\t\"wind_degrees\":180,\n\t\t\"wind_mph\":22,\n\t\t\"wind_gust_mph\":0,\n\t\t\"wind_kph\":35,\n\t\t\"wind_gust_kph\":0,\n\t\t\"pressure_mb\":\"1011\",\n\t\t\"pressure_in\":\"29.87\",\n\t\t\"pressure_trend\":\"-\",\n\t\t\"dewpoint_string\":\"77 F (25 C)\",\n\t\t\"dewpoint_f\":77,\n\t\t\"dewpoint_c\":25,\n\t\t\"heat_index_string\":\"94 F (34 C)\",\n\t\t\"heat_index_f\":94,\n\t\t\"heat_index_c\":34,\n\t\t\"windchill_string\":\"NA\",\n\t\t\"windchill_f\":\"NA\",\n\t\t\"windchill_c\":\"NA\",\n\t\t\"feelslike_string\":\"94 F (34 C)\",\n\t\t\"feelslike_f\":\"94\",\n\t\t\"feelslike_c\":\"34\",\n\t\t\"visibility_mi\":\"10.0\",\n\t\t\"visibility_km\":\"16.1\",\n\t\t\"solarradiation\":\"--\",\n\t\t\"UV\":\"5\",\"precip_1hr_string\":\"-9999.00 in (-9999.00 mm)\",\n\t\t\"precip_1hr_in\":\"-9999.00\",\n\t\t\"precip_1hr_metric\":\"--\",\n\t\t\"precip_today_string\":\"0.00 in (0.0 mm)\",\n\t\t\"precip_today_in\":\"0.00\",\n\t\t\"precip_today_metric\":\"0.0\",\n\t\t\"icon\":\"partlycloudy\",\n\t\t\"icon_url\":\"http://icons.wxug.com/i/c/k/partlycloudy.gif\",\n\t\t\"forecast_url\":\"http://www.wunderground.com/US/NY/Kennedy_International.html\",\n\t\t\"history_url\":\"http://www.wunderground.com/history/airport/KJFK/2017/8/22/DailyHistory.html\",\n\t\t\"ob_url\":\"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=40.63999939,-73.77999878\",\n\t\t\"nowcast\":\"\"\n\t}\n}\n",
+      "headers": {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=UTF-8",
+        "Last-Modified": "Tue, 22 Aug 2017 20:42:16 GMT",
+        "Server": "Apache/2.2.15 (CentOS)",
+        "X-CreationTime": "0.040",
+        "Expires": "Tue, 22 Aug 2017 20:42:16 GMT",
+        "Cache-Control": "max-age=0, no-cache",
+        "Pragma": "no-cache",
+        "Date": "Tue, 22 Aug 2017 20:42:16 GMT",
+        "Content-Length": "2628",
+        "Connection": "keep-alive"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
