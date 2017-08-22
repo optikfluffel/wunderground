@@ -5,6 +5,10 @@ A basic wrapper for the [Weather Underground API](https://www.wunderground.com/w
 *Currently only suppors the [Stratus Plan](https://www.wunderground.com/weather/api/d/pricing.html) Endpoints.*
 *With a Stratus Developer key, you get up to 10 API calls per minute and/or 500 calls per day (which is roughly one call every three minutes).*
 
+[![Build Status](https://travis-ci.org/optikfluffel/wunderground.svg?branch=master)](https://travis-ci.org/optikfluffel/wunderground)
+[![Version](http://img.shields.io/hexpm/v/wunderground.svg?style=flat)](https://hex.pm/packages/wunderground)
+[![License](https://img.shields.io/hexpm/l/wunderground.svg?style=flat)](https://unlicense.org)
+
 ## Installation
 
 Add `wunderground` to your list of dependencies in `mix.exs`:
