@@ -8,6 +8,8 @@ defmodule Wunderground.Mixfile do
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       deps: deps(),
+      description: description(),
+      package: package(),
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
         vcr: :test,
@@ -43,5 +45,20 @@ defmodule Wunderground.Mixfile do
       {:exvcr, "~> 0.8", only: [:test], runtime: false},
       {:excoveralls, "~> 0.7", only: [:test], runtime: false}
     ]
+  end
+
+  defp description do
+    "⚠️ WORK IN PROGRESS: A basic wrapper for the Weather Underground API."
+  end
+
+  defp package do
+    [
+      name: "wunderground",
+      files: ["lib", "mix.exs", "README.md"],
+      maintainers: ["optikfluffel"],
+      licenses: ["WTFPL"],
+      links: %{"GitHub" => "https://github.com/optikfluffel/wunderground",
+               "Docs" => "https://hexdocs.pm/wunderground/"}
+     ]
   end
 end
