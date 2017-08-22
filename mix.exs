@@ -8,11 +8,17 @@ defmodule Wunderground.Mixfile do
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       deps: deps(),
+      test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
         vcr: :test,
         "vcr.delete": :test,
         "vcr.check": :test,
-        "vcr.show": :test
+        "vcr.show": :test,
+
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
       ],
       dialyzer: [
         flags: [:error_handling, :race_conditions, :underspecs]
@@ -34,7 +40,8 @@ defmodule Wunderground.Mixfile do
       {:poison, "~> 3.1"},
       {:ex_doc, "~> 0.16", only: [:dev], runtime: false},
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
-      {:exvcr, "~> 0.8", only: [:test]}
+      {:exvcr, "~> 0.8", only: [:test], runtime: false},
+      {:excoveralls, "~> 0.7", only: [:test], runtime: false}
     ]
   end
 end
