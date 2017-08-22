@@ -32,8 +32,9 @@ defmodule Wunderground.Mixfile do
     [
       {:httpoison, "~> 0.13"},
       {:poison, "~> 3.1"},
-      {:exvcr, "~> 0.8", only: :test},
-      {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false}
+      {:ex_doc, "~> 0.16", only: [:dev], runtime: false},
+      {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
+      {:exvcr, "~> 0.8", only: [:test]}
     ]
   end
 end

@@ -4,8 +4,15 @@ defmodule Wunderground.CurrentConditions do
 
   require Logger
 
-  @type error :: {:not_found | :station_offline | String.t, String.t}
+  @type error_type :: :not_found | :station_offline | String.t
+  @type error_message :: String.t
+  @type error :: {error_type, error_message}
 
+  @doc """
+  Gets the current conditions for the given tuple.
+
+  *Isn't really intended to be used directly. Use `Wunderground.current_conditions/1` instead.*
+  """
   @spec get(Query.t) :: {:ok, any} | {:error, any}
   def get({:us, state, city}) do
     get_from_api(state <> "/" <> city)
@@ -76,7 +83,7 @@ defmodule Wunderground.CurrentConditions do
 
       %{"description" => description, "type" => error_type} ->
         Logger.warn "Unhandled error: " <> error_type
-        Logger.warn description
+        Logger.warn "with description: " <> description
         {:error, {error_type, description}}
 
       %{"type" => "Station:OFFLINE"} ->

@@ -36,9 +36,8 @@ config :wunderground, api_key: "YOUR_API_KEY"
 ### Current Conditions
 
 ```elixir
-# For the US using {:us, state, city}
+# For the US using {:us, state, city} or {:us_zip, zipcode}
 {:ok, conditions} = Wunderground.current_conditions({:us, "CA", "San_Francisco"})
-# or using {:us_zip, zipcode}
 {:ok, conditions} = Wunderground.current_conditions({:us_zip, 60290})
 
 # International using {:international, country, city}
