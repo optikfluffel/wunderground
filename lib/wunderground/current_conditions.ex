@@ -4,7 +4,7 @@ defmodule Wunderground.CurrentConditions do
 
   require Logger
 
-  @type error_type :: :not_found | :station_offline | String.t
+  @type error_type :: :invalid_api_key | :not_found | :station_offline | String.t
   @type error_message :: String.t
   @type error :: {error_type, error_message}
 
@@ -80,6 +80,10 @@ defmodule Wunderground.CurrentConditions do
     case decoded["response"]["error"] do
       %{"description" => description, "type" => "querynotfound"} ->
         {:error, {:not_found, description}}
+
+      # TODO: handle elsewhere, maybe this whole function should go to Query or API
+      %{"description" => description, "type" => "keynotfound"} ->
+        {:error, {:invalid_api_key, description}}
 
       %{"description" => description, "type" => error_type} ->
         Logger.warn "Unhandled error: " <> error_type
