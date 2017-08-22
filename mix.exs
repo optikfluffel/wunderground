@@ -56,7 +56,7 @@ defmodule Wunderground.Mixfile do
       name: "wunderground",
       files: ["lib", "mix.exs", "README.md"],
       maintainers: ["optikfluffel"],
-      licenses: ["WTFPL"],
+      licenses: ["Unlicense"],
       links: %{"GitHub" => "https://github.com/optikfluffel/wunderground"}
      ]
   end
