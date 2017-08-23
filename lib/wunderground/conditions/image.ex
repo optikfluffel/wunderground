@@ -1,4 +1,4 @@
-defmodule Wunderground.CurrentConditions.Image do
+defmodule Wunderground.Conditions.Image do
   @moduledoc """
   Ensures correct JSON encoding.
   """
@@ -8,11 +8,11 @@ defmodule Wunderground.CurrentConditions.Image do
   defstruct ~w(url title link)a
 
   @typedoc """
-  The Wunderground.CurrentConditions.Image struct.
+  The Wunderground.Conditions.Image struct.
 
   ## Example
 
-      %Wunderground.CurrentConditions.Image{
+      %Wunderground.Conditions.Image{
         link: "http://www.wunderground.com",
         title: "Weather Underground",
         url: "http://icons.wxug.com/graphics/wu2/logo_130x80.png"

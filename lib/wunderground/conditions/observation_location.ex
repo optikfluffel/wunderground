@@ -1,4 +1,4 @@
-defmodule Wunderground.CurrentConditions.ObservationLocation do
+defmodule Wunderground.Conditions.ObservationLocation do
   @moduledoc """
   Ensures correct JSON encoding.
   """
@@ -8,11 +8,11 @@ defmodule Wunderground.CurrentConditions.ObservationLocation do
   defstruct ~w(full city state country country_iso3166 latitude longitude elevation)a
 
   @typedoc """
-  The Wunderground.CurrentConditions.ObservationLocation struct.
+  The Wunderground.Conditions.ObservationLocation struct.
 
   ## Example
 
-      %Wunderground.CurrentConditions.ObservationLocation{
+      %Wunderground.Conditions.ObservationLocation{
         city: "Berlin,
         Berlin Mitte",
         country: "DL",

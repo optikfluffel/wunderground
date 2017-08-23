@@ -1,13 +1,13 @@
-defmodule Wunderground.CurrentConditions.Observation do
+defmodule Wunderground.Conditions.Observation do
   @moduledoc """
   Ensures correct JSON encoding.
   """
 
   @derive [Poison.Encoder]
 
-  alias Wunderground.CurrentConditions.Image
-  alias Wunderground.CurrentConditions.DisplayLocation
-  alias Wunderground.CurrentConditions.ObservationLocation
+  alias Wunderground.Conditions.Image
+  alias Wunderground.Conditions.DisplayLocation
+  alias Wunderground.Conditions.ObservationLocation
 
   defstruct ~w(image display_location observation_location estimated station_id observation_time
                observation_time_rfc822 observation_epoch local_time_rfc822 local_epoch
@@ -21,11 +21,11 @@ defmodule Wunderground.CurrentConditions.Observation do
                history_url ob_url)a
 
   @typedoc """
-  The Wunderground.CurrentConditions.Observation struct.
+  The Wunderground.Conditions.Observation struct.
 
   ## Example
 
-      %Wunderground.CurrentConditions.Observation{
+      %Wunderground.Conditions.Observation{
         observation_time: "Last Updated on August 23, 7:57 PM CEST",
         pressure_in: "30.08",
         wind_kph: 1.0,
@@ -40,7 +40,7 @@ defmodule Wunderground.CurrentConditions.Observation do
         pressure_trend: "0",
         feelslike_f: "66.7",
         precip_today_string: "0.00 in (0 mm)",
-        display_location: %Wunderground.CurrentConditions.DisplayLocation{
+        display_location: %Wunderground.Conditions.DisplayLocation{
           city: "Berlin",
           country: "DL",
           country_iso3166: "DE",
@@ -58,7 +58,7 @@ defmodule Wunderground.CurrentConditions.Observation do
         precip_1hr_in: "-999.00",
         dewpoint_f: 60,
         windchill_string: "NA",
-        image: %Wunderground.CurrentConditions.Image{
+        image: %Wunderground.Conditions.Image{
           link: "http://www.wunderground.com",
           title: "Weather Underground",
           url: "http://icons.wxug.com/graphics/wu2/logo_130x80.png"
@@ -90,7 +90,7 @@ defmodule Wunderground.CurrentConditions.Observation do
         wind_gust_kph: "1.9",
         station_id: "IBEBERLI388",
         dewpoint_string: "60 F (16 C)",
-        observation_location: %Wunderground.CurrentConditions.ObservationLocation{
+        observation_location: %Wunderground.Conditions.ObservationLocation{
           city: "Berlin,
           Berlin Mitte",
           country: "DL",

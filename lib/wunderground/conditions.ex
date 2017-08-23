@@ -1,20 +1,20 @@
-defmodule Wunderground.CurrentConditions do
+defmodule Wunderground.Conditions do
   @moduledoc """
   Handles API requests for getting the current conditions of a given place.
   """
 
   alias Wunderground.Query
   alias Wunderground.API
-  alias Wunderground.CurrentConditions.Observation
-  alias Wunderground.CurrentConditions.Image
-  alias Wunderground.CurrentConditions.DisplayLocation
-  alias Wunderground.CurrentConditions.ObservationLocation
+  alias Wunderground.Conditions.Observation
+  alias Wunderground.Conditions.Image
+  alias Wunderground.Conditions.DisplayLocation
+  alias Wunderground.Conditions.ObservationLocation
 
   require Logger
 
   @derive [Poison.Encoder]
 
-  defstruct ~w(response observation)a
+  defstruct ~w(response current_observation)a
 
   @type error_type :: :invalid_api_key | :not_found | :station_offline | String.t
   @type error_message :: String.t
@@ -23,7 +23,7 @@ defmodule Wunderground.CurrentConditions do
   @doc """
   Gets the current conditions for the given tuple.
 
-  *Isn't really intended to be used directly. Use `Wunderground.current_conditions/1` instead.*
+  *Isn't really intended to be used directly. Use `Wunderground.conditions/1` instead.*
   """
   @spec get(Query.t) :: {:ok, Observation.t} | {:error, error}
   def get({:us, state, city}) do
@@ -56,7 +56,7 @@ defmodule Wunderground.CurrentConditions do
   # end
   def get(_) do
     msg = """
-    Invalid argument for Wunderground.CurrentConditions.get/1
+    Invalid argument for Wunderground.Conditions.get/1
 
       The given argument should be one of:
 
@@ -87,8 +87,8 @@ defmodule Wunderground.CurrentConditions do
 
   @spec decode_body(String.t) :: {:ok, Observation.t} | {:error, any}
   defp decode_body(body) do
-    decoded = Poison.decode!(body, as: %Wunderground.CurrentConditions{
-      observation: %Observation{
+    decoded = Poison.decode!(body, as: %Wunderground.Conditions{
+      current_observation: %Observation{
         image: %Image{},
         display_location: %DisplayLocation{},
         observation_location: %ObservationLocation{}
@@ -117,7 +117,7 @@ defmodule Wunderground.CurrentConditions do
         {:error, {error_type, "No description."}}
 
       _ ->
-        {:ok, decoded.observation}
+        {:ok, decoded.current_observation}
     end
   end
 end
