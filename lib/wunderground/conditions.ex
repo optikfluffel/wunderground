@@ -1,14 +1,14 @@
-defmodule Wunderground.Conditions do
+defmodule Wunderground.CurrentConditions do
   @moduledoc """
   Handles API requests for getting the current conditions of a given place.
   """
 
   alias Wunderground.Query
   alias Wunderground.API
-  alias Wunderground.Conditions.CurrentObservation
-  alias Wunderground.Conditions.Image
-  alias Wunderground.Conditions.DisplayLocation
-  alias Wunderground.Conditions.ObservationLocation
+  alias Wunderground.CurrentConditions.CurrentObservation
+  alias Wunderground.CurrentConditions.Image
+  alias Wunderground.CurrentConditions.DisplayLocation
+  alias Wunderground.CurrentConditions.ObservationLocation
 
   require Logger
 
@@ -23,7 +23,7 @@ defmodule Wunderground.Conditions do
   @doc """
   Gets the current conditions for the given tuple.
 
-  *Isn't really intended to be used directly. Use `Wunderground.conditions/1` instead.*
+  *Isn't really intended to be used directly. Use `Wunderground.current_conditions/1` instead.*
   """
   @spec get(Query.t) :: {:ok, CurrentObservation.t} | {:error, error}
   def get({:us, state, city}) do
@@ -56,7 +56,7 @@ defmodule Wunderground.Conditions do
   # end
   def get(_) do
     msg = """
-    Invalid argument for Wunderground.Conditions.get/1
+    Invalid argument for Wunderground.CurrentConditions.get/1
 
       The given argument should be one of:
 
@@ -87,7 +87,7 @@ defmodule Wunderground.Conditions do
 
   @spec decode_body(String.t) :: {:ok, CurrentObservation.t} | {:error, any}
   defp decode_body(body) do
-    decoded = Poison.decode!(body, as: %Wunderground.Conditions{
+    decoded = Poison.decode!(body, as: %Wunderground.CurrentConditions{
       current_observation: %CurrentObservation{
         image: %Image{},
         display_location: %DisplayLocation{},

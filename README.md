@@ -47,30 +47,30 @@ config :wunderground, api_key: System.get_env("WUNDERGROUND_API_KEY")
 
 ```elixir
 # For the US using {:us, state, city} or {:us_zip, zipcode}
-{:ok, conditions} = Wunderground.conditions({:us, "CA", "San_Francisco"})
-{:ok, conditions} = Wunderground.conditions({:us_zip, 60290})
+{:ok, current_conditions} = Wunderground.current_conditions({:us, "CA", "San_Francisco"})
+{:ok, current_conditions} = Wunderground.current_conditions({:us_zip, 60290})
 
 # International using {:international, country, city}
-{:ok, conditions} = Wunderground.conditions({:international, "Australia", "Sydney"})
+{:ok, current_conditions} = Wunderground.current_conditions({:international, "Australia", "Sydney"})
 
 # Via coordinates using {:geo, lat, lng}
-{:ok, conditions} = Wunderground.conditions({:geo, 37.8, -122.4})
+{:ok, current_conditions} = Wunderground.current_conditions({:geo, 37.8, -122.4})
 
 # For an airport using {:airport, airport_code}
-{:ok, conditions} = Wunderground.conditions({:airport, "KJFK"})
+{:ok, current_conditions} = Wunderground.current_conditions({:airport, "KJFK"})
 
 # For a specific personal weather station using {:pws, pws_id}
-{:ok, conditions} = Wunderground.conditions({:pws, "KCASANFR70"})
+{:ok, current_conditions} = Wunderground.current_conditions({:pws, "KCASANFR70"})
 
 # From the GeoIP of the running machine using {:auto_ip}
-{:ok, conditions} = Wunderground.conditions({:auto_ip})
+{:ok, current_conditions} = Wunderground.current_conditions({:auto_ip})
 ```
 
 ## TODO
 
 -   [ ] Geolookup
 -   [ ] Autocomplete
--   [ ] Current conditions
+-   [ ] Current current_conditions
 -   [ ] 3-day forecast summary
 -   [ ] Astronomy
 -   [ ] Almanac for today

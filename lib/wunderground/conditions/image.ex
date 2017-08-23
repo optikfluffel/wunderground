@@ -1,4 +1,4 @@
-defmodule Wunderground.Conditions.Image do
+defmodule Wunderground.CurrentConditions.Image do
   @derive [Poison.Encoder]
 
   defstruct ~w(url title link)a

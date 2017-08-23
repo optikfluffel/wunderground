@@ -1,4 +1,4 @@
-defmodule Wunderground.Conditions.DisplayLocation do
+defmodule Wunderground.CurrentConditions.DisplayLocation do
   @derive [Poison.Encoder]
 
   defstruct ~w(full city state state_name country country_iso3166 zip latitude longitude elevation)a
