@@ -1,4 +1,8 @@
 defmodule Wunderground.Conditions do
+  @moduledoc """
+  Handles API requests for getting the current conditions of a given place.
+  """
+
   alias Wunderground.Query
   alias Wunderground.API
 
