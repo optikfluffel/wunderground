@@ -1,4 +1,6 @@
 defmodule Wunderground.CurrentConditions.ObservationLocation do
+  @moduledoc false
+
   @derive [Poison.Encoder]
 
   defstruct ~w(full city state country country_iso3166 latitude longitude elevation)a

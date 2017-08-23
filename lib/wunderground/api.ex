@@ -9,6 +9,6 @@ defmodule Wunderground.API do
   end
 
   # ---------------------------------------- PRIVATE HELPER
-  @spec api_key() :: String.t
-  defp api_key(), do: Application.get_env(:wunderground, :api_key) || ""
+  @spec api_key :: String.t
+  defp api_key, do: Application.get_env(:wunderground, :api_key) || ""
 end

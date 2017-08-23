@@ -1,4 +1,6 @@
 defmodule Wunderground.CurrentConditions.CurrentObservation do
+  @moduledoc false
+
   @derive [Poison.Encoder]
 
   alias Wunderground.CurrentConditions.Image
