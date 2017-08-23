@@ -1,5 +1,7 @@
 defmodule Wunderground.CurrentConditions.CurrentObservation do
-  @moduledoc false
+  @moduledoc """
+  Ensures correct JSON encoding.
+  """
 
   @derive [Poison.Encoder]
 

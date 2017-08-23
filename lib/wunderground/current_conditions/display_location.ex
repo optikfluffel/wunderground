@@ -1,10 +1,32 @@
 defmodule Wunderground.CurrentConditions.DisplayLocation do
-  @moduledoc false
+  @moduledoc """
+  Ensures correct JSON encoding.
+  """
 
   @derive [Poison.Encoder]
 
   defstruct ~w(full city state state_name country country_iso3166 zip latitude longitude elevation)a
 
+  @typedoc """
+  The Wunderground.CurrentConditions.DisplayLocation struct.
+
+  ## Example
+
+      %Wunderground.CurrentConditions.DisplayLocation{
+        city: "Berlin",
+        country: "DL",
+        country_iso3166: "DE",
+        elevation: "45.1",
+        full: "Berlin,
+        Germany",
+        latitude: "52.52000046",
+        longitude: "13.40999985",
+        state: "BE",
+        state_name: "Germany",
+        zip: "00000"
+      }
+
+  """
   @type t :: %__MODULE__{
     full: String.t,
     city: String.t,
