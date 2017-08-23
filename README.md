@@ -28,12 +28,16 @@ end
 First go to [wunderground.com/weather/api](https://www.wunderground.com/weather/api/)
 and sign up/in to get your API key.
 
-By default, the `WUNDERGROUND_API_KEY` environment variable is checked for a key.
+The prefered way is to add an environment variable:
 
-To set it explicitly you can put the following, in your config file(s):
+```sh
+export WUNDERGROUND_API_KEY="<<YOUR KEY HERE>>"
+```
+
+And then load it in your `config.exs` (or env specific configuration file) like so:
 
 ```elixir
-config :wunderground, api_key: "YOUR_API_KEY"
+config :wunderground, api_key: System.get_env("WUNDERGROUND_API_KEY")
 ```
 
 ## Usage
