@@ -21,3 +21,6 @@ erl_crash.dump
 
 # ignore https://github.com/kennethreitz/autoenv config file
 .env
+
+# Inch-ci
+/docs/
