@@ -6,6 +6,7 @@ A basic wrapper for the [Weather Underground API](https://www.wunderground.com/w
 *With a Stratus Developer key, you get up to 10 API calls per minute and/or 500 calls per day (which is roughly one call every three minutes).*
 
 [![Build Status](https://travis-ci.org/optikfluffel/wunderground.svg?branch=master)](https://travis-ci.org/optikfluffel/wunderground)
+[![Coveralls](https://img.shields.io/coveralls/optikfluffel/wunderground.svg)](https://coveralls.io/github/optikfluffel/wunderground)
 [![Inline docs](http://inch-ci.org/github/optikfluffel/wunderground.svg)](http://inch-ci.org/github/optikfluffel/wunderground)
 [![Version](http://img.shields.io/hexpm/v/wunderground.svg?style=flat)](https://hex.pm/packages/wunderground)
 [![License](https://img.shields.io/hexpm/l/wunderground.svg?style=flat)](https://unlicense.org)
