@@ -4,6 +4,7 @@ defmodule Wunderground do
   """
 
   alias Wunderground.Conditions
+  alias Wunderground.Conditions.CurrentObservation
   alias Wunderground.Query
 
   @type error :: Conditions.error
@@ -32,6 +33,6 @@ defmodule Wunderground do
       # From the GeoIP of the running machine using {:auto_ip}
       {:ok, conditions} = Wunderground.conditions({:auto_ip})
   """
-  @spec conditions(Query.t) :: {:ok, any} | {:error, error}
+  @spec conditions(Query.t) :: {:ok, CurrentObservation.t} | {:error, error}
   defdelegate conditions(query), to: Conditions, as: :get
 end

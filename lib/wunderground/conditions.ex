@@ -5,8 +5,16 @@ defmodule Wunderground.Conditions do
 
   alias Wunderground.Query
   alias Wunderground.API
+  alias Wunderground.Conditions.CurrentObservation
+  alias Wunderground.Conditions.Image
+  alias Wunderground.Conditions.DisplayLocation
+  alias Wunderground.Conditions.ObservationLocation
 
   require Logger
+
+  @derive [Poison.Encoder]
+
+  defstruct ~w(response current_observation)a
 
   @type error_type :: :invalid_api_key | :not_found | :station_offline | String.t
   @type error_message :: String.t
@@ -17,7 +25,7 @@ defmodule Wunderground.Conditions do
 
   *Isn't really intended to be used directly. Use `Wunderground.conditions/1` instead.*
   """
-  @spec get(Query.t) :: {:ok, any} | {:error, any}
+  @spec get(Query.t) :: {:ok, CurrentObservation.t} | {:error, error}
   def get({:us, state, city}) do
     get_from_api(state <> "/" <> city)
   end
@@ -64,7 +72,7 @@ defmodule Wunderground.Conditions do
   end
 
   # ---------------------------------------- PRIVATE HELPER
-  @spec get_from_api(String.t) :: {:ok, map} | {:error, error}
+  @spec get_from_api(String.t) :: {:ok, CurrentObservation.t} | {:error, error}
   defp get_from_api(query_string) do
     case API.get("/conditions/q/" <> query_string) do
       {:ok, response} ->
@@ -77,11 +85,17 @@ defmodule Wunderground.Conditions do
     end
   end
 
-  @spec decode_body(String.t) :: {:ok, map} | {:error, any}
+  @spec decode_body(String.t) :: {:ok, CurrentObservation.t} | {:error, any}
   defp decode_body(body) do
-    decoded = Poison.decode!(body)
+    decoded = Poison.decode!(body, as: %Wunderground.Conditions{
+      current_observation: %CurrentObservation{
+        image: %Image{},
+        display_location: %DisplayLocation{},
+        observation_location: %ObservationLocation{}
+      }
+    })
 
-    case decoded["response"]["error"] do
+    case decoded.response["error"] do
       %{"description" => description, "type" => "querynotfound"} ->
         {:error, {:not_found, description}}
 
@@ -103,7 +117,7 @@ defmodule Wunderground.Conditions do
         {:error, {error_type, "No description."}}
 
       _ ->
-        {:ok, decoded["current_observation"]}
+        {:ok, decoded.current_observation}
     end
   end
 end
