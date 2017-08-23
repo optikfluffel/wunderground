@@ -1,0 +1,31 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "http://api.wunderground.com/api/<<wunderground_api_key>>/conditions/q/CA/San_Francisco.json"
+    },
+    "response": {
+      "body": "\n{\n  \"response\": {\n  \"version\":\"0.1\",\n  \"termsofService\":\"http://www.wunderground.com/weather/api/d/terms.html\",\n  \"features\": {\n  \"conditions\": 1\n  }\n\t}\n  ,\t\"current_observation\": {\n\t\t\"image\": {\n\t\t\"url\":\"http://icons.wxug.com/graphics/wu2/logo_130x80.png\",\n\t\t\"title\":\"Weather Underground\",\n\t\t\"link\":\"http://www.wunderground.com\"\n\t\t},\n\t\t\"display_location\": {\n\t\t\"full\":\"San Francisco, CA\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"state_name\":\"California\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"zip\":\"94102\",\n\t\t\"magic\":\"1\",\n\t\t\"wmo\":\"99999\",\n\t\t\"latitude\":\"37.77999878\",\n\t\t\"longitude\":\"-122.41999817\",\n\t\t\"elevation\":\"60.0\"\n\t\t},\n\t\t\"observation_location\": {\n\t\t\"full\":\"SOMA, San Francisco, California\",\n\t\t\"city\":\"SOMA, San Francisco\",\n\t\t\"state\":\"California\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"latitude\":\"37.778488\",\n\t\t\"longitude\":\"-122.408005\",\n\t\t\"elevation\":\"23 ft\"\n\t\t},\n\t\t\"estimated\": {\n\t\t},\n\t\t\"station_id\":\"KCASANFR131\",\n\t\t\"observation_time\":\"Last Updated on August 23, 2:56 AM PDT\",\n\t\t\"observation_time_rfc822\":\"Wed, 23 Aug 2017 02:56:39 -0700\",\n\t\t\"observation_epoch\":\"1503482199\",\n\t\t\"local_time_rfc822\":\"Wed, 23 Aug 2017 02:56:48 -0700\",\n\t\t\"local_epoch\":\"1503482208\",\n\t\t\"local_tz_short\":\"PDT\",\n\t\t\"local_tz_long\":\"America/Los_Angeles\",\n\t\t\"local_tz_offset\":\"-0700\",\n\t\t\"weather\":\"Overcast\",\n\t\t\"temperature_string\":\"58.2 F (14.6 C)\",\n\t\t\"temp_f\":58.2,\n\t\t\"temp_c\":14.6,\n\t\t\"relative_humidity\":\"91%\",\n\t\t\"wind_string\":\"From the SW at 1.0 MPH Gusting to 9.0 MPH\",\n\t\t\"wind_dir\":\"SW\",\n\t\t\"wind_degrees\":229,\n\t\t\"wind_mph\":1.0,\n\t\t\"wind_gust_mph\":\"9.0\",\n\t\t\"wind_kph\":1.6,\n\t\t\"wind_gust_kph\":\"14.5\",\n\t\t\"pressure_mb\":\"1015\",\n\t\t\"pressure_in\":\"29.98\",\n\t\t\"pressure_trend\":\"-\",\n\t\t\"dewpoint_string\":\"56 F (13 C)\",\n\t\t\"dewpoint_f\":56,\n\t\t\"dewpoint_c\":13,\n\t\t\"heat_index_string\":\"NA\",\n\t\t\"heat_index_f\":\"NA\",\n\t\t\"heat_index_c\":\"NA\",\n\t\t\"windchill_string\":\"NA\",\n\t\t\"windchill_f\":\"NA\",\n\t\t\"windchill_c\":\"NA\",\n\t\t\"feelslike_string\":\"58.2 F (14.6 C)\",\n\t\t\"feelslike_f\":\"58.2\",\n\t\t\"feelslike_c\":\"14.6\",\n\t\t\"visibility_mi\":\"9.0\",\n\t\t\"visibility_km\":\"14.5\",\n\t\t\"solarradiation\":\"0\",\n\t\t\"UV\":\"0.0\",\"precip_1hr_string\":\"0.00 in ( 0 mm)\",\n\t\t\"precip_1hr_in\":\"0.00\",\n\t\t\"precip_1hr_metric\":\" 0\",\n\t\t\"precip_today_string\":\"0.00 in (0 mm)\",\n\t\t\"precip_today_in\":\"0.00\",\n\t\t\"precip_today_metric\":\"0\",\n\t\t\"icon\":\"cloudy\",\n\t\t\"icon_url\":\"http://icons.wxug.com/i/c/k/nt_cloudy.gif\",\n\t\t\"forecast_url\":\"http://www.wunderground.com/US/CA/San_Francisco.html\",\n\t\t\"history_url\":\"http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KCASANFR131\",\n\t\t\"ob_url\":\"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=37.778488,-122.408005\",\n\t\t\"nowcast\":\"\"\n\t}\n}\n",
+      "headers": {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=UTF-8",
+        "Last-Modified": "Wed, 23 Aug 2017 09:56:48 GMT",
+        "Server": "Apache/2.2.15 (CentOS)",
+        "X-CreationTime": "0.066",
+        "Expires": "Wed, 23 Aug 2017 09:56:48 GMT",
+        "Cache-Control": "max-age=0, no-cache",
+        "Pragma": "no-cache",
+        "Date": "Wed, 23 Aug 2017 09:56:48 GMT",
+        "Content-Length": "2634",
+        "Connection": "keep-alive"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

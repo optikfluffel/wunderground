@@ -1,9 +1,9 @@
-defmodule Wunderground.CurrentConditionsTest do
+defmodule Wunderground.ConditionsTest do
   @moduledoc false
   use ExUnit.Case, async: false
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
-  alias Wunderground.CurrentConditions
+  alias Wunderground.Conditions
 
   @not_found {:not_found, "No cities match your search query"}
   @station_offline {:station_offline, "The station you're looking for either doesn't exist or is simply offline right now."}
@@ -17,86 +17,86 @@ defmodule Wunderground.CurrentConditionsTest do
 
   describe "get/1" do
     test "us" do
-      use_cassette "current_conditions/us" do
-        assert {:ok, _current_conditions} = CurrentConditions.get({:us, "CA", "San_Francisco"})
+      use_cassette "conditions/us" do
+        assert {:ok, _conditions} = Conditions.get({:us, "CA", "San_Francisco"})
       end
     end
 
     test "us not_found" do
-      use_cassette "current_conditions/us_not_found" do
-        assert {:error, @not_found} = CurrentConditions.get({:us, "CA", "USDUBFOURZEGBNUIZDSNGIUZFV"})
+      use_cassette "conditions/us_not_found" do
+        assert {:error, @not_found} = Conditions.get({:us, "CA", "USDUBFOURZEGBNUIZDSNGIUZFV"})
       end
     end
 
     test "us_zip" do
-      use_cassette "current_conditions/us_zip" do
-        assert {:ok, _current_conditions} = CurrentConditions.get({:us_zip, 60290})
+      use_cassette "conditions/us_zip" do
+        assert {:ok, _conditions} = Conditions.get({:us_zip, 60290})
       end
     end
 
     test "us_zip not_found" do
-      use_cassette "current_conditions/us_zip_not_found" do
-        assert {:error, @not_found} = CurrentConditions.get({:us_zip, -1})
+      use_cassette "conditions/us_zip_not_found" do
+        assert {:error, @not_found} = Conditions.get({:us_zip, -1})
       end
     end
 
     test "international" do
-      use_cassette "current_conditions/international" do
-        assert {:ok, _current_conditions} = CurrentConditions.get({:international, "Australia", "Sydney"})
+      use_cassette "conditions/international" do
+        assert {:ok, _conditions} = Conditions.get({:international, "Australia", "Sydney"})
       end
     end
 
     test "international not_found" do
-      use_cassette "current_conditions/international_not_found" do
-        assert {:error, @not_found} = CurrentConditions.get({:international, "Australia", "AUDUBFOURZEGBNUIZDSNGIUZFV"})
+      use_cassette "conditions/international_not_found" do
+        assert {:error, @not_found} = Conditions.get({:international, "Australia", "AUDUBFOURZEGBNUIZDSNGIUZFV"})
       end
     end
 
     test "geo" do
-      use_cassette "current_conditions/geo" do
-        assert {:ok, _current_conditions} = CurrentConditions.get({:geo, 37.8, -122.4})
+      use_cassette "conditions/geo" do
+        assert {:ok, _conditions} = Conditions.get({:geo, 37.8, -122.4})
       end
     end
 
     test "geo not_found" do
-      use_cassette "current_conditions/geo_not_found" do
-        assert {:error, @not_found} = CurrentConditions.get({:geo, 2500.0, -5000.0})
+      use_cassette "conditions/geo_not_found" do
+        assert {:error, @not_found} = Conditions.get({:geo, 2500.0, -5000.0})
       end
     end
 
     test "airport" do
-      use_cassette "current_conditions/airport" do
-        assert {:ok, _current_conditions} = CurrentConditions.get({:airport, "KJFK"})
+      use_cassette "conditions/airport" do
+        assert {:ok, _conditions} = Conditions.get({:airport, "KJFK"})
       end
     end
 
     test "airport not_found" do
-      use_cassette "current_conditions/airport_not_found" do
-        assert {:error, @not_found} = CurrentConditions.get({:airport, "AIRUBFOURZEGBNUIZDSNGIUZFV"})
+      use_cassette "conditions/airport_not_found" do
+        assert {:error, @not_found} = Conditions.get({:airport, "AIRUBFOURZEGBNUIZDSNGIUZFV"})
       end
     end
 
     test "pws" do
-      use_cassette "current_conditions/pws" do
-        assert {:ok, _current_conditions} = CurrentConditions.get({:pws, "KCASANFR70"})
+      use_cassette "conditions/pws" do
+        assert {:ok, _conditions} = Conditions.get({:pws, "KCASANFR70"})
       end
     end
 
     test "pws not_found" do
-      use_cassette "current_conditions/pws_not_found" do
-        assert {:error, @station_offline} = CurrentConditions.get({:pws, "NOT_A_PWS_ID"})
+      use_cassette "conditions/pws_not_found" do
+        assert {:error, @station_offline} = Conditions.get({:pws, "NOT_A_PWS_ID"})
       end
     end
 
     test "auto_ip" do
-      use_cassette "current_conditions/auto_ip" do
-        assert {:ok, _current_conditions} = CurrentConditions.get({:auto_ip})
+      use_cassette "conditions/auto_ip" do
+        assert {:ok, _conditions} = Conditions.get({:auto_ip})
       end
     end
 
     test "ArgumentError" do
       assert_raise ArgumentError, fn ->
-        CurrentConditions.get(:not_an_argument)
+        Conditions.get(:not_an_argument)
       end
     end
   end

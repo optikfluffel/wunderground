@@ -1,0 +1,31 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "http://api.wunderground.com/api/<<wunderground_api_key>>/conditions/q/auto_ip.json"
+    },
+    "response": {
+      "body": "\n{\n  \"response\": {\n  \"version\":\"0.1\",\n  \"termsofService\":\"http://www.wunderground.com/weather/api/d/terms.html\",\n  \"features\": {\n  \"conditions\": 1\n  }\n\t}\n  ,\t\"current_observation\": {\n\t\t\"image\": {\n\t\t\"url\":\"http://icons.wxug.com/graphics/wu2/logo_130x80.png\",\n\t\t\"title\":\"Weather Underground\",\n\t\t\"link\":\"http://www.wunderground.com\"\n\t\t},\n\t\t\"display_location\": {\n\t\t\"full\":\"Auto, WV\",\n\t\t\"city\":\"Auto\",\n\t\t\"state\":\"WV\",\n\t\t\"state_name\":\"West Virginia\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"zip\":\"24966\",\n\t\t\"magic\":\"2\",\n\t\t\"wmo\":\"99999\",\n\t\t\"latitude\":\"37.95999908\",\n\t\t\"longitude\":\"-80.33000183\",\n\t\t\"elevation\":\"696.2\"\n\t\t},\n\t\t\"observation_location\": {\n\t\t\"full\":\"Bunny\\u0027s Holler Live Weather, Auto, West Virginia\",\n\t\t\"city\":\"Bunny\\u0027s Holler Live Weather, Auto\",\n\t\t\"state\":\"West Virginia\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"latitude\":\"37.964897\",\n\t\t\"longitude\":\"-80.302818\",\n\t\t\"elevation\":\"2543 ft\"\n\t\t},\n\t\t\"estimated\": {\n\t\t},\n\t\t\"station_id\":\"KWVAUTO1\",\n\t\t\"observation_time\":\"Last Updated on August 23, 5:56 AM EDT\",\n\t\t\"observation_time_rfc822\":\"Wed, 23 Aug 2017 05:56:42 -0400\",\n\t\t\"observation_epoch\":\"1503482202\",\n\t\t\"local_time_rfc822\":\"Wed, 23 Aug 2017 05:56:48 -0400\",\n\t\t\"local_epoch\":\"1503482208\",\n\t\t\"local_tz_short\":\"EDT\",\n\t\t\"local_tz_long\":\"America/New_York\",\n\t\t\"local_tz_offset\":\"-0400\",\n\t\t\"weather\":\"Overcast\",\n\t\t\"temperature_string\":\"68.5 F (20.3 C)\",\n\t\t\"temp_f\":68.5,\n\t\t\"temp_c\":20.3,\n\t\t\"relative_humidity\":\"88%\",\n\t\t\"wind_string\":\"Calm\",\n\t\t\"wind_dir\":\"SSE\",\n\t\t\"wind_degrees\":158,\n\t\t\"wind_mph\":0.0,\n\t\t\"wind_gust_mph\":0,\n\t\t\"wind_kph\":0,\n\t\t\"wind_gust_kph\":0,\n\t\t\"pressure_mb\":\"1014\",\n\t\t\"pressure_in\":\"29.96\",\n\t\t\"pressure_trend\":\"-\",\n\t\t\"dewpoint_string\":\"65 F (18 C)\",\n\t\t\"dewpoint_f\":65,\n\t\t\"dewpoint_c\":18,\n\t\t\"heat_index_string\":\"NA\",\n\t\t\"heat_index_f\":\"NA\",\n\t\t\"heat_index_c\":\"NA\",\n\t\t\"windchill_string\":\"NA\",\n\t\t\"windchill_f\":\"NA\",\n\t\t\"windchill_c\":\"NA\",\n\t\t\"feelslike_string\":\"68.5 F (20.3 C)\",\n\t\t\"feelslike_f\":\"68.5\",\n\t\t\"feelslike_c\":\"20.3\",\n\t\t\"visibility_mi\":\"10.0\",\n\t\t\"visibility_km\":\"16.1\",\n\t\t\"solarradiation\":\"0\",\n\t\t\"UV\":\"0.0\",\"precip_1hr_string\":\"0.00 in ( 0 mm)\",\n\t\t\"precip_1hr_in\":\"0.00\",\n\t\t\"precip_1hr_metric\":\" 0\",\n\t\t\"precip_today_string\":\"0.00 in (0 mm)\",\n\t\t\"precip_today_in\":\"0.00\",\n\t\t\"precip_today_metric\":\"0\",\n\t\t\"icon\":\"cloudy\",\n\t\t\"icon_url\":\"http://icons.wxug.com/i/c/k/nt_cloudy.gif\",\n\t\t\"forecast_url\":\"http://www.wunderground.com/US/WV/Auto.html\",\n\t\t\"history_url\":\"http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KWVAUTO1\",\n\t\t\"ob_url\":\"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=37.964897,-80.302818\",\n\t\t\"nowcast\":\"\"\n\t}\n}\n",
+      "headers": {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=UTF-8",
+        "Last-Modified": "Wed, 23 Aug 2017 09:56:48 GMT",
+        "Server": "Apache/2.2.15 (CentOS)",
+        "X-CreationTime": "0.120",
+        "Expires": "Wed, 23 Aug 2017 09:56:49 GMT",
+        "Cache-Control": "max-age=0, no-cache",
+        "Pragma": "no-cache",
+        "Date": "Wed, 23 Aug 2017 09:56:49 GMT",
+        "Content-Length": "2599",
+        "Connection": "keep-alive"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

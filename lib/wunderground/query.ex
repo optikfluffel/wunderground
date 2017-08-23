@@ -1,4 +1,8 @@
 defmodule Wunderground.Query do
+  @moduledoc """
+  A collections of types for handling queries to the Weather Underground API.
+  """
+
   @typedoc """
   US state shortform.
 

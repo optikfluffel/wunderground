@@ -1,4 +1,8 @@
-defmodule Wunderground.CurrentConditions do
+defmodule Wunderground.Conditions do
+  @moduledoc """
+  Handles API requests for getting the current conditions of a given place.
+  """
+
   alias Wunderground.Query
   alias Wunderground.API
 
@@ -11,7 +15,7 @@ defmodule Wunderground.CurrentConditions do
   @doc """
   Gets the current conditions for the given tuple.
 
-  *Isn't really intended to be used directly. Use `Wunderground.current_conditions/1` instead.*
+  *Isn't really intended to be used directly. Use `Wunderground.conditions/1` instead.*
   """
   @spec get(Query.t) :: {:ok, any} | {:error, any}
   def get({:us, state, city}) do
@@ -44,7 +48,7 @@ defmodule Wunderground.CurrentConditions do
   # end
   def get(_) do
     msg = """
-    Invalid argument for Wunderground.CurrentConditions.get/1
+    Invalid argument for Wunderground.Conditions.get/1
 
       The given argument should be one of:
 

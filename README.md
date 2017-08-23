@@ -19,7 +19,7 @@ Add `wunderground` to your list of dependencies in `mix.exs`:
 def deps do
   [
     # ...
-    {:wunderground, "~> 0.0.1"}
+    {:wunderground, "~> 0.0.2"}
   ]
 end
 ```
@@ -47,23 +47,23 @@ config :wunderground, api_key: System.get_env("WUNDERGROUND_API_KEY")
 
 ```elixir
 # For the US using {:us, state, city} or {:us_zip, zipcode}
-{:ok, conditions} = Wunderground.current_conditions({:us, "CA", "San_Francisco"})
-{:ok, conditions} = Wunderground.current_conditions({:us_zip, 60290})
+{:ok, conditions} = Wunderground.conditions({:us, "CA", "San_Francisco"})
+{:ok, conditions} = Wunderground.conditions({:us_zip, 60290})
 
 # International using {:international, country, city}
-{:ok, conditions} = Wunderground.current_conditions({:international, "Australia", "Sydney"})
+{:ok, conditions} = Wunderground.conditions({:international, "Australia", "Sydney"})
 
 # Via coordinates using {:geo, lat, lng}
-{:ok, conditions} = Wunderground.current_conditions({:geo, 37.8, -122.4})
+{:ok, conditions} = Wunderground.conditions({:geo, 37.8, -122.4})
 
 # For an airport using {:airport, airport_code}
-{:ok, conditions} = Wunderground.current_conditions({:airport, "KJFK"})
+{:ok, conditions} = Wunderground.conditions({:airport, "KJFK"})
 
 # For a specific personal weather station using {:pws, pws_id}
-{:ok, conditions} = Wunderground.current_conditions({:pws, "KCASANFR70"})
+{:ok, conditions} = Wunderground.conditions({:pws, "KCASANFR70"})
 
 # From the GeoIP of the running machine using {:auto_ip}
-{:ok, conditions} = Wunderground.current_conditions({:auto_ip})
+{:ok, conditions} = Wunderground.conditions({:auto_ip})
 ```
 
 ## TODO
