@@ -4,7 +4,7 @@ defmodule Wunderground.CurrentConditionsTest do
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   alias Wunderground.CurrentConditions
-  alias Wunderground.CurrentConditions.CurrentObservation
+  alias Wunderground.CurrentConditions.Observation
 
   @not_found {:not_found, "No cities match your search query"}
   @station_offline {:station_offline, "The station you're looking for either doesn't exist or is simply offline right now."}
@@ -19,7 +19,7 @@ defmodule Wunderground.CurrentConditionsTest do
   describe "get/1" do
     test "us" do
       use_cassette "current_conditions/us" do
-        assert {:ok, %CurrentObservation{}} = CurrentConditions.get({:us, "CA", "San_Francisco"})
+        assert {:ok, %Observation{}} = CurrentConditions.get({:us, "CA", "San_Francisco"})
       end
     end
 
@@ -31,7 +31,7 @@ defmodule Wunderground.CurrentConditionsTest do
 
     test "us_zip" do
       use_cassette "current_conditions/us_zip" do
-        assert {:ok, %CurrentObservation{}} = CurrentConditions.get({:us_zip, 60290})
+        assert {:ok, %Observation{}} = CurrentConditions.get({:us_zip, 60290})
       end
     end
 
@@ -43,7 +43,7 @@ defmodule Wunderground.CurrentConditionsTest do
 
     test "international" do
       use_cassette "current_conditions/international" do
-        assert {:ok, %CurrentObservation{}} = CurrentConditions.get({:international, "Australia", "Sydney"})
+        assert {:ok, %Observation{}} = CurrentConditions.get({:international, "Australia", "Sydney"})
       end
     end
 
@@ -55,7 +55,7 @@ defmodule Wunderground.CurrentConditionsTest do
 
     test "geo" do
       use_cassette "current_conditions/geo" do
-        assert {:ok, %CurrentObservation{}} = CurrentConditions.get({:geo, 37.8, -122.4})
+        assert {:ok, %Observation{}} = CurrentConditions.get({:geo, 37.8, -122.4})
       end
     end
 
@@ -67,7 +67,7 @@ defmodule Wunderground.CurrentConditionsTest do
 
     test "airport" do
       use_cassette "current_conditions/airport" do
-        assert {:ok, %CurrentObservation{}} = CurrentConditions.get({:airport, "KJFK"})
+        assert {:ok, %Observation{}} = CurrentConditions.get({:airport, "KJFK"})
       end
     end
 
@@ -79,7 +79,7 @@ defmodule Wunderground.CurrentConditionsTest do
 
     test "pws" do
       use_cassette "current_conditions/pws" do
-        assert {:ok, %CurrentObservation{}} = CurrentConditions.get({:pws, "KCASANFR70"})
+        assert {:ok, %Observation{}} = CurrentConditions.get({:pws, "KCASANFR70"})
       end
     end
 
@@ -91,7 +91,7 @@ defmodule Wunderground.CurrentConditionsTest do
 
     test "auto_ip" do
       use_cassette "current_conditions/auto_ip" do
-        assert {:ok, %CurrentObservation{}} = CurrentConditions.get({:auto_ip})
+        assert {:ok, %Observation{}} = CurrentConditions.get({:auto_ip})
       end
     end
 

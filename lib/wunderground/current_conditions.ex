@@ -5,7 +5,7 @@ defmodule Wunderground.CurrentConditions do
 
   alias Wunderground.Query
   alias Wunderground.API
-  alias Wunderground.CurrentConditions.CurrentObservation
+  alias Wunderground.CurrentConditions.Observation
   alias Wunderground.CurrentConditions.Image
   alias Wunderground.CurrentConditions.DisplayLocation
   alias Wunderground.CurrentConditions.ObservationLocation
@@ -14,7 +14,7 @@ defmodule Wunderground.CurrentConditions do
 
   @derive [Poison.Encoder]
 
-  defstruct ~w(response current_observation)a
+  defstruct ~w(response observation)a
 
   @type error_type :: :invalid_api_key | :not_found | :station_offline | String.t
   @type error_message :: String.t
@@ -25,7 +25,7 @@ defmodule Wunderground.CurrentConditions do
 
   *Isn't really intended to be used directly. Use `Wunderground.current_conditions/1` instead.*
   """
-  @spec get(Query.t) :: {:ok, CurrentObservation.t} | {:error, error}
+  @spec get(Query.t) :: {:ok, Observation.t} | {:error, error}
   def get({:us, state, city}) do
     get_from_api(state <> "/" <> city)
   end
@@ -72,7 +72,7 @@ defmodule Wunderground.CurrentConditions do
   end
 
   # ---------------------------------------- PRIVATE HELPER
-  @spec get_from_api(String.t) :: {:ok, CurrentObservation.t} | {:error, error}
+  @spec get_from_api(String.t) :: {:ok, Observation.t} | {:error, error}
   defp get_from_api(query_string) do
     case API.get("/conditions/q/" <> query_string) do
       {:ok, response} ->
@@ -85,10 +85,10 @@ defmodule Wunderground.CurrentConditions do
     end
   end
 
-  @spec decode_body(String.t) :: {:ok, CurrentObservation.t} | {:error, any}
+  @spec decode_body(String.t) :: {:ok, Observation.t} | {:error, any}
   defp decode_body(body) do
     decoded = Poison.decode!(body, as: %Wunderground.CurrentConditions{
-      current_observation: %CurrentObservation{
+      observation: %Observation{
         image: %Image{},
         display_location: %DisplayLocation{},
         observation_location: %ObservationLocation{}
@@ -117,7 +117,7 @@ defmodule Wunderground.CurrentConditions do
         {:error, {error_type, "No description."}}
 
       _ ->
-        {:ok, decoded.current_observation}
+        {:ok, decoded.observation}
     end
   end
 end

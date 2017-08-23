@@ -1,4 +1,4 @@
-defmodule Wunderground.CurrentConditions.CurrentObservation do
+defmodule Wunderground.CurrentConditions.Observation do
   @moduledoc """
   Ensures correct JSON encoding.
   """
@@ -21,11 +21,11 @@ defmodule Wunderground.CurrentConditions.CurrentObservation do
                history_url ob_url)a
 
   @typedoc """
-  The Wunderground.CurrentConditions.CurrentObservation struct.
+  The Wunderground.CurrentConditions.Observation struct.
 
   ## Example
 
-      %Wunderground.CurrentConditions.CurrentObservation{
+      %Wunderground.CurrentConditions.Observation{
         observation_time: "Last Updated on August 23, 7:57 PM CEST",
         pressure_in: "30.08",
         wind_kph: 1.0,
