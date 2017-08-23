@@ -42,6 +42,7 @@ defmodule Wunderground.Mixfile do
       {:poison, "~> 3.1"},
       {:ex_doc, "~> 0.16", only: [:dev], runtime: false},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
+      {:credo, "~> 0.8", only: [:dev], runtime: false},
       {:exvcr, "~> 0.8", only: [:test], runtime: false},
       {:excoveralls, "~> 0.7", only: [:test], runtime: false},
       {:inch_ex, "~> 0.5", only: [:docs], runtime: false}
