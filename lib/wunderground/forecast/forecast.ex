@@ -1,31 +1,26 @@
-defmodule Wunderground.Conditions do
+defmodule Wunderground.Forecast do
   @moduledoc """
-  Handles API requests for getting the current conditions of a given place.
+  Handles API requests for getting the forecast of a given place.
   """
 
-  alias Wunderground.Query
   alias Wunderground.API
-  alias Wunderground.Conditions.Observation
-  alias Wunderground.Conditions.Image
-  alias Wunderground.Conditions.DisplayLocation
-  alias Wunderground.Conditions.ObservationLocation
+  alias Wunderground.Query
 
   require Logger
 
   @derive [Poison.Encoder]
-
-  defstruct ~w(response current_observation)a
+  defstruct ~w(response forecast)a
 
   @type error_type :: :invalid_api_key | :not_found | :station_offline | :invalid_ip | String.t
   @type error_message :: String.t
   @type error :: {error_type, error_message}
 
   @doc """
-  Gets the current conditions for the given tuple.
+  Gets the forecast for the given tuple.
 
-  *Isn't really intended to be used directly. Use `Wunderground.conditions/1` instead.*
+  *Isn't really intended to be used directly. Use `Wunderground.forecast/1` instead.*
   """
-  @spec get(Query.t) :: {:ok, Observation.t} | {:error, error}
+  @spec get(Query.t) :: {:ok, Wunderground.Forecast.Result.t} | {:error, error}
   def get({:us, state, city}) do
     get_from_api(state <> "/" <> city)
   end
@@ -87,26 +82,43 @@ defmodule Wunderground.Conditions do
   end
 
   # ---------------------------------------- PRIVATE HELPER
-  @spec get_from_api(String.t, String.t) :: {:ok, Observation.t} | {:error, error}
+  @spec get_from_api(String.t, String.t) :: {:ok, Wunderground.Forecast.Result.t} | {:error, error}
   defp get_from_api(location_string, query_string \\ "") do
-    case API.get("/conditions/q/" <> location_string <> ".json" <> query_string) do
+    case API.get("/forecast/q/" <> location_string <> ".json" <> query_string) do
       {:ok, response} ->
         decode_body(response.body)
 
       {:error, error} ->
-        Logger.warn "Error while trying to get current conditions with query: #{location_string}"
+        Logger.warn "Error while trying to get the forecast with query: #{location_string}"
         Logger.warn inspect(error)
         {:error, error}
     end
   end
 
-  @spec decode_body(String.t) :: {:ok, Observation.t} | {:error, error}
+  @spec decode_body(String.t) :: {:ok, Wunderground.Forecast.Result.t} | {:error, error}
   defp decode_body(body) do
-    decoded = Poison.decode!(body, as: %Wunderground.Conditions{
-      current_observation: %Observation{
-        image: %Image{},
-        display_location: %DisplayLocation{},
-        observation_location: %ObservationLocation{}
+    decoded = Poison.decode!(body, as: %__MODULE__{
+      forecast: %Wunderground.Forecast.Result{
+        txt_forecast: %Wunderground.Forecast.TXTForecast{
+          forecastday: [%Wunderground.Forecast.TXTForecastDay{}]
+        },
+        simpleforecast: %Wunderground.Forecast.SimpleForecast{
+          forecastday: [
+            %Wunderground.Forecast.SimpleForecastDay{
+              avewind: %Wunderground.Forecast.SimpleForecastDay.Wind{},
+              date: %Wunderground.Forecast.SimpleForecastDay.Date{},
+              high: %Wunderground.Forecast.SimpleForecastDay.Temperature{},
+              low: %Wunderground.Forecast.SimpleForecastDay.Temperature{},
+              maxwind: %Wunderground.Forecast.SimpleForecastDay.Wind{},
+              qpf_allday: %Wunderground.Forecast.SimpleForecastDay.Rain{},
+              qpf_day: %Wunderground.Forecast.SimpleForecastDay.Rain{},
+              qpf_night: %Wunderground.Forecast.SimpleForecastDay.Rain{},
+              snow_allday: %Wunderground.Forecast.SimpleForecastDay.Snow{},
+              snow_day: %Wunderground.Forecast.SimpleForecastDay.Snow{},
+              snow_night: %Wunderground.Forecast.SimpleForecastDay.Snow{}
+            }
+          ]
+        },
       }
     })
 
@@ -132,7 +144,7 @@ defmodule Wunderground.Conditions do
         {:error, {error_type, "No description."}}
 
       _ ->
-        {:ok, decoded.current_observation}
+        {:ok, decoded.forecast}
     end
   end
 end
