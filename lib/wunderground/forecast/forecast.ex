@@ -5,6 +5,7 @@ defmodule Wunderground.Forecast do
 
   alias Wunderground.API
   alias Wunderground.Query
+  alias Wunderground.Forecast.Result
 
   require Logger
 
@@ -95,10 +96,13 @@ defmodule Wunderground.Forecast do
     end
   end
 
-  @spec decode_body(String.t) :: {:ok, Wunderground.Forecast.Result.t} | {:error, error}
+  @spec decode_body(String.t) :: {:ok, Result.t} | {:error, error}
   defp decode_body(body) do
     decoded = Poison.decode!(body, as: %__MODULE__{
-      forecast: %Wunderground.Forecast.Result{
+      response: %Wunderground.API.Response{
+        error: %Wunderground.API.Error{}
+      },
+      forecast: %Result{
         txt_forecast: %Wunderground.Forecast.TXTForecast{
           forecastday: [%Wunderground.Forecast.TXTForecastDay{}]
         },
@@ -122,26 +126,22 @@ defmodule Wunderground.Forecast do
       }
     })
 
-    case decoded.response["error"] do
-      %{"description" => description, "type" => "querynotfound"} ->
+    case decoded.response.error do
+      %Wunderground.API.Error{description: description, type: "querynotfound"} ->
         {:error, {:not_found, description}}
 
       # TODO: handle elsewhere, maybe this whole function should go to Query or API
-      %{"description" => description, "type" => "keynotfound"} ->
+      %Wunderground.API.Error{description: description, type: "keynotfound"} ->
         {:error, {:invalid_api_key, description}}
 
-      %{"description" => description, "type" => error_type} ->
-        Logger.warn "Unhandled error: " <> error_type
-        Logger.warn "with description: " <> description
-        {:error, {error_type, description}}
-
-      %{"type" => "Station:OFFLINE"} ->
+      %Wunderground.API.Error{type: "Station:OFFLINE"} ->
         msg = "The station you're looking for either doesn't exist or is simply offline right now."
         {:error, {:station_offline, msg}}
 
-      %{"type" => error_type} ->
+      %Wunderground.API.Error{description: description, type: error_type} ->
         Logger.warn "Unhandled error: " <> error_type
-        {:error, {error_type, "No description."}}
+        Logger.warn "with description: " <> description
+        {:error, {error_type, description}}
 
       _ ->
         {:ok, decoded.forecast}
