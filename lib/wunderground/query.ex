@@ -102,5 +102,6 @@ defmodule Wunderground.Query do
              {:geo, lat, lng} |
              {:airport, airport_code} |
              {:pws, pws_id} |
-             {:auto_ip} # TODO: | {:auto_ip, ipv4_address}
+             {:auto_ip} |
+             {:auto_ip, ipv4_address}
 end

@@ -19,7 +19,7 @@ Add `wunderground` to your list of dependencies in `mix.exs`:
 def deps do
   [
     # ...
-    {:wunderground, "~> 0.0.2"}
+    {:wunderground, "~> 0.0.3"}
   ]
 end
 ```
@@ -62,15 +62,17 @@ config :wunderground, api_key: System.get_env("WUNDERGROUND_API_KEY")
 # For a specific personal weather station using {:pws, pws_id}
 {:ok, conditions} = Wunderground.conditions({:pws, "KCASANFR70"})
 
-# From the GeoIP of the running machine using {:auto_ip}
+# For the GeoIP location of the running machine using {:auto_ip}
+# or any IP address using {:auto_ip, ip_adress}
 {:ok, conditions} = Wunderground.conditions({:auto_ip})
+{:ok, conditions} = Wunderground.conditions({:auto_ip, {185, 1, 74, 1}})
 ```
 
 ## TODO
 
 -   [ ] Geolookup
 -   [ ] Autocomplete
--   [ ] Current conditions
+-   [x] Current conditions
 -   [ ] 3-day forecast summary
 -   [ ] Astronomy
 -   [ ] Almanac for today

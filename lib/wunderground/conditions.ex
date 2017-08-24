@@ -5,10 +5,18 @@ defmodule Wunderground.Conditions do
 
   alias Wunderground.Query
   alias Wunderground.API
+  alias Wunderground.Conditions.Observation
+  alias Wunderground.Conditions.Image
+  alias Wunderground.Conditions.DisplayLocation
+  alias Wunderground.Conditions.ObservationLocation
 
   require Logger
 
-  @type error_type :: :invalid_api_key | :not_found | :station_offline | String.t
+  @derive [Poison.Encoder]
+
+  defstruct ~w(response current_observation)a
+
+  @type error_type :: :invalid_api_key | :not_found | :station_offline | :invalid_ip | String.t
   @type error_message :: String.t
   @type error :: {error_type, error_message}
 
@@ -17,7 +25,7 @@ defmodule Wunderground.Conditions do
 
   *Isn't really intended to be used directly. Use `Wunderground.conditions/1` instead.*
   """
-  @spec get(Query.t) :: {:ok, any} | {:error, any}
+  @spec get(Query.t) :: {:ok, Observation.t} | {:error, error}
   def get({:us, state, city}) do
     get_from_api(state <> "/" <> city)
   end
@@ -30,8 +38,8 @@ defmodule Wunderground.Conditions do
     get_from_api(country <> "/" <> city)
   end
   def get({:geo, lat, lng}) do
-    query_string = Float.to_string(lat) <> "," <> Float.to_string(lng)
-    get_from_api(query_string)
+    location_string = Float.to_string(lat) <> "," <> Float.to_string(lng)
+    get_from_api(location_string)
   end
   def get({:airport, airport_code}) do
     get_from_api(airport_code)
@@ -42,10 +50,25 @@ defmodule Wunderground.Conditions do
   def get({:auto_ip}) do
     get_from_api("auto_ip")
   end
-  # TODO: support auto_ip with specific IP address
-  # def get({:auto_ip, {a, b, c, d}}) do
-  #   get_from_api()
-  # end
+  def get({:auto_ip, {_, _, _, _} = ip}) do
+    case :inet_parse.ntoa(ip) do
+      {:error, reason} ->
+        {:error, {:invalid_ip, to_string(reason)}}
+
+      ip_charlist when is_list(ip_charlist) ->
+        get_from_api("auto_ip", "?geo_ip=#{to_string ip_charlist}")
+    end
+  end
+  def get({:auto_ip, _}) do
+    msg = """
+    Invalid argument for Wunderground.Conditions.get({:auto_ip, ip})
+
+      The given ip address should be a tuple with four integers, eg:
+
+      {127, 0, 0, 1}
+    """
+    raise ArgumentError, message: msg
+  end
   def get(_) do
     msg = """
     Invalid argument for Wunderground.Conditions.get/1
@@ -64,24 +87,30 @@ defmodule Wunderground.Conditions do
   end
 
   # ---------------------------------------- PRIVATE HELPER
-  @spec get_from_api(String.t) :: {:ok, map} | {:error, error}
-  defp get_from_api(query_string) do
-    case API.get("/conditions/q/" <> query_string) do
+  @spec get_from_api(String.t, String.t) :: {:ok, Observation.t} | {:error, error}
+  defp get_from_api(location_string, query_string \\ "") do
+    case API.get("/conditions/q/" <> location_string <> ".json" <> query_string) do
       {:ok, response} ->
         decode_body(response.body)
 
       {:error, error} ->
-        Logger.warn "Error while trying to get current conditions with query: #{query_string}"
+        Logger.warn "Error while trying to get current conditions with query: #{location_string}"
         Logger.warn inspect(error)
         {:error, error}
     end
   end
 
-  @spec decode_body(String.t) :: {:ok, map} | {:error, any}
+  @spec decode_body(String.t) :: {:ok, Observation.t} | {:error, any}
   defp decode_body(body) do
-    decoded = Poison.decode!(body)
+    decoded = Poison.decode!(body, as: %Wunderground.Conditions{
+      current_observation: %Observation{
+        image: %Image{},
+        display_location: %DisplayLocation{},
+        observation_location: %ObservationLocation{}
+      }
+    })
 
-    case decoded["response"]["error"] do
+    case decoded.response["error"] do
       %{"description" => description, "type" => "querynotfound"} ->
         {:error, {:not_found, description}}
 
@@ -103,7 +132,7 @@ defmodule Wunderground.Conditions do
         {:error, {error_type, "No description."}}
 
       _ ->
-        {:ok, decoded["current_observation"]}
+        {:ok, decoded.current_observation}
     end
   end
 end

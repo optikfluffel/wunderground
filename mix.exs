@@ -4,7 +4,7 @@ defmodule Wunderground.Mixfile do
   def project do
     [
       app: :wunderground,
-      version: "0.0.2",
+      version: "0.0.3",
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       deps: deps(),
@@ -42,6 +42,7 @@ defmodule Wunderground.Mixfile do
       {:poison, "~> 3.1"},
       {:ex_doc, "~> 0.16", only: [:dev], runtime: false},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
+      {:credo, "~> 0.8", only: [:dev], runtime: false},
       {:exvcr, "~> 0.8", only: [:test], runtime: false},
       {:excoveralls, "~> 0.7", only: [:test], runtime: false},
       {:inch_ex, "~> 0.5", only: [:docs], runtime: false}
