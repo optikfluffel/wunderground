@@ -3,6 +3,7 @@ defmodule Wunderground do
   Wunderground, a basic API wrapper for talking to the Weather Underground HTTP API.
   """
 
+  alias Wunderground.API
   alias Wunderground.Conditions
   alias Wunderground.Forecast
   alias Wunderground.Query
@@ -33,7 +34,7 @@ defmodule Wunderground do
       {:ok, conditions} = Wunderground.conditions({:auto_ip})
       {:ok, conditions} = Wunderground.conditions({:auto_ip, {185, 1, 74, 1}})
   """
-  @spec conditions(Query.t) :: {:ok, Conditions.Observation.t} | {:error, Conditions.error}
+  @spec conditions(Query.t) :: {:ok, Conditions.Observation.t} | {:error, API.error}
   defdelegate conditions(query), to: Conditions, as: :get
 
   @doc """
@@ -62,6 +63,6 @@ defmodule Wunderground do
       {:ok, forecast} = Wunderground.forecast({:auto_ip})
       {:ok, forecast} = Wunderground.forecast({:auto_ip, {185, 1, 74, 1}})
   """
-  @spec forecast(Query.t) :: {:ok, Forecast.Result.t} | {:error, Forecast.error}
+  @spec forecast(Query.t) :: {:ok, Forecast.Result.t} | {:error, API.error}
   defdelegate forecast(query), to: Forecast, as: :get
 end
