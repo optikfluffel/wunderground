@@ -3,6 +3,14 @@ defmodule Wunderground.Query do
   A collections of types for handling queries to the Weather Underground API.
   """
 
+  @invalid_ip """
+  Invalid argument for Wunderground.Conditions.get({:auto_ip, ip})
+
+    The given ip address should be a tuple with four integers, eg:
+
+    {127, 0, 0, 1}
+  """
+
   @typedoc """
   US state shortform.
 
@@ -104,4 +112,64 @@ defmodule Wunderground.Query do
              {:pws, pws_id} |
              {:auto_ip} |
              {:auto_ip, ipv4_address}
+
+  @doc """
+  Builds a query string for the given `Query` tuple.
+
+  *Isn't really intended to be used directly. Use `Wunderground.forecast/1` instead.*
+  """
+  @spec build(__MODULE__.t) :: {:ok, String.t}
+  def build({:us, state, city}) do
+    query(state <> "/" <> city)
+  end
+  def build({:us_zip, zipcode}) do
+    query(Integer.to_string(zipcode))
+  end
+  def build({:international, country, city}) do
+    query(country <> "/" <> city)
+  end
+  def build({:geo, lat, lng}) do
+    query(Float.to_string(lat) <> "," <> Float.to_string(lng))
+  end
+  def build({:airport, airport_code}) do
+    query(airport_code)
+  end
+  def build({:pws, pws_id}) do
+    query("pws:" <> pws_id)
+  end
+  def build({:auto_ip}) do
+    query("auto_ip")
+  end
+  def build({:auto_ip, {_, _, _, _} = ip}) do
+    case :inet_parse.ntoa(ip) do
+      {:error, _reason} ->
+        raise ArgumentError, message: @invalid_ip
+
+      ip_charlist when is_list(ip_charlist) ->
+        query("auto_ip", "?geo_ip=#{to_string ip_charlist}")
+    end
+  end
+  def build({:auto_ip, _}) do
+    raise ArgumentError, message: @invalid_ip
+  end
+  def build(_) do
+    msg = """
+    Invalid argument for Wunderground.Conditions.build/1
+
+      The given argument should be one of:
+
+      - {:us, state, city}
+      - {:us_zip, zipcode}
+      - {:international, country, city}
+      - {:geo, lat, lng}
+      - {:airport, airport_code}
+      - {:pws, pws_id}
+      - {:auto_ip}
+    """
+    raise ArgumentError, message: msg
+  end
+
+  defp query(path, params \\ "") do
+    {:ok, "/q/" <> path <> ".json" <> params}
+  end
 end

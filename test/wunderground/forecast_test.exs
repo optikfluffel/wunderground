@@ -8,7 +8,6 @@ defmodule Wunderground.ForecastTest do
 
   @not_found {:not_found, "No cities match your search query"}
   @station_offline {:station_offline, "The station you're looking for either doesn't exist or is simply offline right now."}
-  @invalid_ip {:invalid_ip, "einval"}
 
   setup_all do
     HTTPoison.start()
@@ -102,9 +101,9 @@ defmodule Wunderground.ForecastTest do
       end
     end
 
-    test "auto_ip with 'wrong' ip address" do
-      use_cassette "forecast/auto_ip_custom" do
-        assert {:error, @invalid_ip} = Forecast.get({:auto_ip, {"185", "1", "74", "1"}})
+    test "auto_ip with 'wrong' ip address tuple" do
+      assert_raise ArgumentError, fn ->
+        Forecast.get({:auto_ip, {"185", "1", "74", "1"}})
       end
     end
 
