@@ -19,7 +19,7 @@ Add `wunderground` to your list of dependencies in `mix.exs`:
 def deps do
   [
     # ...
-    {:wunderground, "~> 0.0.3"}
+    {:wunderground, "~> 0.0.4"}
   ]
 end
 ```
@@ -68,11 +68,19 @@ config :wunderground, api_key: System.get_env("WUNDERGROUND_API_KEY")
 {:ok, conditions} = Wunderground.conditions({:auto_ip, {185, 1, 74, 1}})
 ```
 
+### Forecast
+
+You can use the same Queries as with [Current Conditions](#current-conditions).
+
+```elixir
+{:ok, forecast} = Wunderground.forecast({:international, "Germany", "Berlin"})
+```
+
 ## TODO
 
 -   [ ] Geolookup
 -   [ ] Autocomplete
 -   [x] Current conditions
--   [ ] 3-day forecast summary
+-   [x] 3-day forecast summary
 -   [ ] Astronomy
 -   [ ] Almanac for today

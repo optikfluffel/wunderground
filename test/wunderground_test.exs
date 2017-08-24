@@ -4,6 +4,7 @@ defmodule WundergroundTest do
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   alias Wunderground.Conditions.Observation
+  alias Wunderground.Forecast.Result
 
   setup_all do
     HTTPoison.start()
@@ -55,6 +56,56 @@ defmodule WundergroundTest do
     test "auto_ip with given ip address" do
       use_cassette "conditions/auto_ip_custom" do
         assert {:ok, %Observation{}} = Wunderground.conditions({:auto_ip, {185, 1, 74, 1}})
+      end
+    end
+  end
+
+  describe "forecast/1" do
+    test "us" do
+      use_cassette "forecast/us" do
+        assert {:ok, %Result{}} = Wunderground.forecast({:us, "CA", "San_Francisco"})
+      end
+    end
+
+    test "us_zip" do
+      use_cassette "forecast/us_zip" do
+        assert {:ok, %Result{}} = Wunderground.forecast({:us_zip, 60290})
+      end
+    end
+
+    test "international" do
+      use_cassette "forecast/international" do
+        assert {:ok, %Result{}} = Wunderground.forecast({:international, "Australia", "Sydney"})
+      end
+    end
+
+    test "geo" do
+      use_cassette "forecast/geo" do
+        assert {:ok, %Result{}} = Wunderground.forecast({:geo, 37.8, -122.4})
+      end
+    end
+
+    test "airport" do
+      use_cassette "forecast/airport" do
+        assert {:ok, %Result{}} = Wunderground.forecast({:airport, "KJFK"})
+      end
+    end
+
+    test "pws" do
+      use_cassette "forecast/pws" do
+        assert {:ok, %Result{}} = Wunderground.forecast({:pws, "KCASANFR70"})
+      end
+    end
+
+    test "auto_ip" do
+      use_cassette "forecast/auto_ip" do
+        assert {:ok, %Result{}} = Wunderground.forecast({:auto_ip})
+      end
+    end
+
+    test "auto_ip with given ip address" do
+      use_cassette "forecast/auto_ip_custom" do
+        assert {:ok, %Result{}} = Wunderground.forecast({:auto_ip, {185, 1, 74, 1}})
       end
     end
   end

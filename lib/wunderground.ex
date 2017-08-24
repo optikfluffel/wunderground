@@ -3,11 +3,10 @@ defmodule Wunderground do
   Wunderground, a basic API wrapper for talking to the Weather Underground HTTP API.
   """
 
+  alias Wunderground.API
   alias Wunderground.Conditions
-  alias Wunderground.Conditions.Observation
+  alias Wunderground.Forecast
   alias Wunderground.Query
-
-  @type error :: Conditions.error
 
   @doc """
   Gets the current conditions for the given location.
@@ -35,6 +34,35 @@ defmodule Wunderground do
       {:ok, conditions} = Wunderground.conditions({:auto_ip})
       {:ok, conditions} = Wunderground.conditions({:auto_ip, {185, 1, 74, 1}})
   """
-  @spec conditions(Query.t) :: {:ok, Observation.t} | {:error, error}
+  @spec conditions(Query.t) :: {:ok, Conditions.Observation.t} | {:error, API.error}
   defdelegate conditions(query), to: Conditions, as: :get
+
+  @doc """
+  Gets the forecast for the given location.
+
+  ## Usage
+
+      # For the US using {:us, state, city} or {:us_zip, zipcode}
+      {:ok, forecast} = Wunderground.forecast({:us, "CA", "San_Francisco"})
+      {:ok, forecast} = Wunderground.forecast({:us_zip, 60290})
+
+      # International using {:international, country, city}
+      {:ok, forecast} = Wunderground.forecast({:international, "Australia", "Sydney"})
+
+      # Via coordinates using {:geo, lat, lng}
+      {:ok, forecast} = Wunderground.forecast({:geo, 37.8, -122.4})
+
+      # For an airport using {:airport, airport_code}
+      {:ok, forecast} = Wunderground.forecast({:airport, "KJFK"})
+
+      # For a specific personal weather station using {:pws, pws_id}
+      {:ok, forecast} = Wunderground.forecast({:pws, "KCASANFR70"})
+
+      # For the GeoIP location of the running machine using {:auto_ip}
+      # or any IP address using {:auto_ip, ip_adress}
+      {:ok, forecast} = Wunderground.forecast({:auto_ip})
+      {:ok, forecast} = Wunderground.forecast({:auto_ip, {185, 1, 74, 1}})
+  """
+  @spec forecast(Query.t) :: {:ok, Forecast.Result.t} | {:error, API.error}
+  defdelegate forecast(query), to: Forecast, as: :get
 end
