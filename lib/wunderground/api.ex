@@ -5,7 +5,7 @@ defmodule Wunderground.API do
   # ---------------------------------------- HTTPoison specific
   @spec process_url(String.t) :: String.t
   def process_url(url) do
-    "http://api.wunderground.com/api/" <> api_key() <> url <> ".json"
+    "http://api.wunderground.com/api/" <> api_key() <> url
   end
 
   # ---------------------------------------- PRIVATE HELPER

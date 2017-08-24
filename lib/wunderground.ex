@@ -30,8 +30,10 @@ defmodule Wunderground do
       # For a specific personal weather station using {:pws, pws_id}
       {:ok, conditions} = Wunderground.conditions({:pws, "KCASANFR70"})
 
-      # From the GeoIP of the running machine using {:auto_ip}
+      # For the GeoIP location of the running machine using {:auto_ip}
+      # or any IP address using {:auto_ip, ip_adress}
       {:ok, conditions} = Wunderground.conditions({:auto_ip})
+      {:ok, conditions} = Wunderground.conditions({:auto_ip, {185, 1, 74, 1}})
   """
   @spec conditions(Query.t) :: {:ok, Observation.t} | {:error, error}
   defdelegate conditions(query), to: Conditions, as: :get

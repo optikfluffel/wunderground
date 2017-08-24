@@ -51,5 +51,11 @@ defmodule WundergroundTest do
         assert {:ok, %Observation{}} = Wunderground.conditions({:auto_ip})
       end
     end
+
+    test "auto_ip with given ip address" do
+      use_cassette "conditions/auto_ip_custom" do
+        assert {:ok, %Observation{}} = Wunderground.conditions({:auto_ip, {185, 1, 74, 1}})
+      end
+    end
   end
 end

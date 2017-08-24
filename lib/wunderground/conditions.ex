@@ -38,8 +38,8 @@ defmodule Wunderground.Conditions do
     get_from_api(country <> "/" <> city)
   end
   def get({:geo, lat, lng}) do
-    query_string = Float.to_string(lat) <> "," <> Float.to_string(lng)
-    get_from_api(query_string)
+    location_string = Float.to_string(lat) <> "," <> Float.to_string(lng)
+    get_from_api(location_string)
   end
   def get({:airport, airport_code}) do
     get_from_api(airport_code)
@@ -50,10 +50,13 @@ defmodule Wunderground.Conditions do
   def get({:auto_ip}) do
     get_from_api("auto_ip")
   end
-  # TODO: support auto_ip with specific IP address
-  # def get({:auto_ip, {a, b, c, d}}) do
-  #   get_from_api()
-  # end
+  def get({:auto_ip, {a, b, c, d}}) do
+    ip_string = Integer.to_string(a) <> "." <>
+                Integer.to_string(b) <> "." <>
+                Integer.to_string(c) <> "." <>
+                Integer.to_string(d)
+    get_from_api("auto_ip", "?geo_ip=#{ip_string}")
+  end
   def get(_) do
     msg = """
     Invalid argument for Wunderground.Conditions.get/1
@@ -72,14 +75,14 @@ defmodule Wunderground.Conditions do
   end
 
   # ---------------------------------------- PRIVATE HELPER
-  @spec get_from_api(String.t) :: {:ok, Observation.t} | {:error, error}
-  defp get_from_api(query_string) do
-    case API.get("/conditions/q/" <> query_string) do
+  @spec get_from_api(String.t, String.t) :: {:ok, Observation.t} | {:error, error}
+  defp get_from_api(location_string, query_string \\ "") do
+    case API.get("/conditions/q/" <> location_string <> ".json" <> query_string) do
       {:ok, response} ->
         decode_body(response.body)
 
       {:error, error} ->
-        Logger.warn "Error while trying to get current conditions with query: #{query_string}"
+        Logger.warn "Error while trying to get current conditions with query: #{location_string}"
         Logger.warn inspect(error)
         {:error, error}
     end
