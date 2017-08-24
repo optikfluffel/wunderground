@@ -16,7 +16,7 @@ defmodule Wunderground.Conditions do
 
   defstruct ~w(response current_observation)a
 
-  @type error_type :: :invalid_api_key | :not_found | :station_offline | String.t
+  @type error_type :: :invalid_api_key | :not_found | :station_offline | :invalid_ip | String.t
   @type error_message :: String.t
   @type error :: {error_type, error_message}
 
@@ -50,12 +50,24 @@ defmodule Wunderground.Conditions do
   def get({:auto_ip}) do
     get_from_api("auto_ip")
   end
-  def get({:auto_ip, {a, b, c, d}}) do
-    ip_string = Integer.to_string(a) <> "." <>
-                Integer.to_string(b) <> "." <>
-                Integer.to_string(c) <> "." <>
-                Integer.to_string(d)
-    get_from_api("auto_ip", "?geo_ip=#{ip_string}")
+  def get({:auto_ip, {_, _, _, _} = ip}) do
+    case :inet_parse.ntoa(ip) do
+      {:error, reason} ->
+        {:error, {:invalid_ip, to_string(reason)}}
+
+      ip_charlist when is_list(ip_charlist) ->
+        get_from_api("auto_ip", "?geo_ip=#{to_string ip_charlist}")
+    end
+  end
+  def get({:auto_ip, _}) do
+    msg = """
+    Invalid argument for Wunderground.Conditions.get({:auto_ip, ip})
+
+      The given ip address should be a tuple with four integers, eg:
+
+      {127, 0, 0, 1}
+    """
+    raise ArgumentError, message: msg
   end
   def get(_) do
     msg = """
