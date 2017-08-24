@@ -19,7 +19,7 @@ Add `wunderground` to your list of dependencies in `mix.exs`:
 def deps do
   [
     # ...
-    {:wunderground, "~> 0.0.2"}
+    {:wunderground, "~> 0.0.3"}
   ]
 end
 ```
@@ -72,7 +72,7 @@ config :wunderground, api_key: System.get_env("WUNDERGROUND_API_KEY")
 
 -   [ ] Geolookup
 -   [ ] Autocomplete
--   [ ] Current conditions
+-   [x] Current conditions
 -   [ ] 3-day forecast summary
 -   [ ] Astronomy
 -   [ ] Almanac for today
