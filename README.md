@@ -71,11 +71,11 @@ query = {:international, "Germany", "Berlin"}
 {:ok, forecast} = Wunderground.forecast(query)
 ```
 
-### 🔎 Different Queries
+## Different Queries
 
 🇺🇸 Cities in the U.S.
 ```elixir
-# using state/city
+# using state and city
 {:us, "CA", "San_Francisco"}
 
 # or via zipcode
