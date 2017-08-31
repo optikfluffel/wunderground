@@ -4,7 +4,6 @@ defmodule Wunderground.ForecastTest do
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   alias Wunderground.Forecast
-  alias Wunderground.Forecast.Result
 
   @not_found {:not_found, "No cities match your search query"}
   @station_offline {:station_offline, "The station you're looking for either doesn't exist or is simply offline right now."}
@@ -12,7 +11,7 @@ defmodule Wunderground.ForecastTest do
   describe "get/1" do
     test "us" do
       use_cassette "forecast/us" do
-        assert {:ok, %Result{}} = Forecast.get({:us, "CA", "San_Francisco"})
+        assert {:ok, %Forecast{}} = Forecast.get({:us, "CA", "San_Francisco"})
       end
     end
 
@@ -24,7 +23,7 @@ defmodule Wunderground.ForecastTest do
 
     test "us_zip" do
       use_cassette "forecast/us_zip" do
-        assert {:ok, %Result{}} = Forecast.get({:us_zip, 60290})
+        assert {:ok, %Forecast{}} = Forecast.get({:us_zip, 60290})
       end
     end
 
@@ -36,7 +35,7 @@ defmodule Wunderground.ForecastTest do
 
     test "international" do
       use_cassette "forecast/international" do
-        assert {:ok, %Result{}} = Forecast.get({:international, "Australia", "Sydney"})
+        assert {:ok, %Forecast{}} = Forecast.get({:international, "Australia", "Sydney"})
       end
     end
 
@@ -48,7 +47,7 @@ defmodule Wunderground.ForecastTest do
 
     test "geo" do
       use_cassette "forecast/geo" do
-        assert {:ok, %Result{}} = Forecast.get({:geo, 37.8, -122.4})
+        assert {:ok, %Forecast{}} = Forecast.get({:geo, 37.8, -122.4})
       end
     end
 
@@ -60,7 +59,7 @@ defmodule Wunderground.ForecastTest do
 
     test "airport" do
       use_cassette "forecast/airport" do
-        assert {:ok, %Result{}} = Forecast.get({:airport, "KJFK"})
+        assert {:ok, %Forecast{}} = Forecast.get({:airport, "KJFK"})
       end
     end
 
@@ -72,7 +71,7 @@ defmodule Wunderground.ForecastTest do
 
     test "pws" do
       use_cassette "forecast/pws" do
-        assert {:ok, %Result{}} = Forecast.get({:pws, "KCASANFR70"})
+        assert {:ok, %Forecast{}} = Forecast.get({:pws, "KCASANFR70"})
       end
     end
 
@@ -84,13 +83,13 @@ defmodule Wunderground.ForecastTest do
 
     test "auto_ip" do
       use_cassette "forecast/auto_ip" do
-        assert {:ok, %Result{}} = Forecast.get({:auto_ip})
+        assert {:ok, %Forecast{}} = Forecast.get({:auto_ip})
       end
     end
 
     test "auto_ip with given ip address" do
       use_cassette "forecast/auto_ip_custom" do
-        assert {:ok, %Result{}} = Forecast.get({:auto_ip, {185, 1, 74, 1}})
+        assert {:ok, %Forecast{}} = Forecast.get({:auto_ip, {185, 1, 74, 1}})
       end
     end
 

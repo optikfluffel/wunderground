@@ -19,7 +19,7 @@ Add `wunderground` to your list of dependencies in `mix.exs`:
 def deps do
   [
     # ...
-    {:wunderground, "~> 0.0.6"}
+    {:wunderground, "~> 0.0.7"}
   ]
 end
 ```

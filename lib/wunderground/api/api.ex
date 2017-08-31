@@ -9,7 +9,7 @@ defmodule Wunderground.API do
   @type error_message :: String.t
   @type error :: {error_type, error_message}
 
-  @spec get_conditions(String.t) :: {:ok, Wunderground.Conditions.Observation.t} | {:error, error}
+  @spec get_conditions(String.t) :: {:ok, Wunderground.Conditions.t} | {:error, error}
   def get_conditions(query) do
     case get_with_query("/conditions", query) do
       {:ok, body} ->
@@ -19,7 +19,7 @@ defmodule Wunderground.API do
     end
   end
 
-  @spec get_forecast(String.t) :: {:ok, Wunderground.Forecast.Result.t} | {:error, error}
+  @spec get_forecast(String.t) :: {:ok, Wunderground.Forecast.t} | {:error, error}
   def get_forecast(query) do
     case get_with_query("/forecast", query) do
       {:ok, body} ->
@@ -29,7 +29,7 @@ defmodule Wunderground.API do
     end
   end
 
-  @spec get_astronomy(String.t) :: {:ok, Wunderground.Astronomy.Moonphase.t} | {:error, error}
+  @spec get_astronomy(String.t) :: {:ok, Wunderground.Astronomy.t} | {:error, error}
   def get_astronomy(query) do
     case get_with_query("/astronomy", query) do
       {:ok, body} ->
@@ -75,12 +75,12 @@ defmodule Wunderground.API do
       response: %Wunderground.API.Response{
         error: %Wunderground.API.Error{}
       },
-      current_observation: %Wunderground.Conditions.Observation{
+      current_observation: %Wunderground.Conditions{
         image: %Wunderground.Conditions.Image{},
         display_location: %Wunderground.Conditions.DisplayLocation{},
         observation_location: %Wunderground.Conditions.ObservationLocation{}
       },
-      forecast: %Wunderground.Forecast.Result{
+      forecast: %Wunderground.Forecast{
         txt_forecast: %Wunderground.Forecast.TXTForecast{
           forecastday: [%Wunderground.Forecast.TXTForecastDay{}]
         },
@@ -102,7 +102,7 @@ defmodule Wunderground.API do
           ]
         },
       },
-      moon_phase: %Wunderground.Astronomy.Moonphase{
+      moon_phase: %Wunderground.Astronomy{
         current_time: %Wunderground.Astronomy.Time{},
         moonrise: %Wunderground.Astronomy.Time{},
         moonset: %Wunderground.Astronomy.Time{},

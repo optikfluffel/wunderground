@@ -1,6 +1,46 @@
 defmodule Wunderground.Query do
   @moduledoc """
   A collections of types for handling queries to the Weather Underground API.
+
+  ## List of possible queries
+
+  🇺🇸 Cities in the U.S.
+
+      # using state and city
+      {:us, "CA", "San_Francisco"}
+
+      # or via zipcode
+      {:us_zip, 60290}
+
+  🌍 Cities outside the U.S.
+
+      # by country and city
+      {:international, "Australia", "Sydney"}
+
+  🌐 Coordinates
+
+      # by latidute and longitude
+      {:geo, 37.8, -122.4}
+
+  ✈️ Airports
+
+      # by International Civil Aviation Organization airport code
+      # see https://en.wikipedia.org/wiki/International_Civil_Aviation_Organization_airport_code
+      {:airport, "KJFK"}
+
+  🌡 Specific personal weather station
+
+      # by it's ID
+      {:pws, "KCASANFR70"}
+
+  📍 GeoIP location
+
+      # of the running machine using
+      {:auto_ip}
+
+      # or of a specific IP address
+      {:auto_ip, {185, 1, 74, 1}}
+
   """
 
   @invalid_ip """
