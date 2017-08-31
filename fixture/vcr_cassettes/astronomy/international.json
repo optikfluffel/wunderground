@@ -1,0 +1,31 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "http://api.wunderground.com/api/<<wunderground_api_key>>/astronomy/q/Australia/Sydney.json"
+    },
+    "response": {
+      "body": "\n{\n  \"response\": {\n  \"version\":\"0.1\",\n  \"termsofService\":\"http://www.wunderground.com/weather/api/d/terms.html\",\n  \"features\": {\n  \"astronomy\": 1\n  }\n\t}\n\t\t,\t\"moon_phase\": {\n\t\t\"percentIlluminated\":\"70\",\n\t\t\"ageOfMoon\":\"9\",\n\t\t\"phaseofMoon\":\"Waxing Gibbous\",\n\t\t\"hemisphere\":\"South\",\n\t\t\"current_time\": {\n\t\t\"hour\":\"21\",\n\t\t\"minute\":\"17\"\n\t\t},\n\t\t\"sunrise\": {\n\t\t\"hour\":\"6\",\n\t\t\"minute\":\"15\"\n\t\t},\n\t\t\"sunset\": {\n\t\t\"hour\":\"17\",\n\t\t\"minute\":\"36\"\n\t\t},\n\t\t\"moonrise\": {\n\t\t\"hour\":\"12\",\n\t\t\"minute\":\"12\"\n\t\t},\n\t\t\"moonset\": {\n\t\t\"hour\":\"1\",\n\t\t\"minute\":\"36\"\n\t\t}\n\t},\n\t\"sun_phase\": {\n\t\t\"sunrise\": {\n\t\t\"hour\":\"6\",\n\t\t\"minute\":\"15\"\n\t\t},\n\t\t\"sunset\": {\n\t\t\"hour\":\"17\",\n\t\t\"minute\":\"36\"\n\t\t}\n\t}\n}\n",
+      "headers": {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=UTF-8",
+        "Last-Modified": "Thu, 31 Aug 2017 11:17:51 GMT",
+        "Server": "Apache/2.2.15 (CentOS)",
+        "X-CreationTime": "0.018",
+        "Expires": "Thu, 31 Aug 2017 11:17:51 GMT",
+        "Cache-Control": "max-age=0, no-cache",
+        "Pragma": "no-cache",
+        "Date": "Thu, 31 Aug 2017 11:17:51 GMT",
+        "Content-Length": "660",
+        "Connection": "keep-alive"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

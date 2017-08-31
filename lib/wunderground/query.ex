@@ -73,6 +73,7 @@ defmodule Wunderground.Query do
 
   @typedoc """
   Shortcode of an airport.
+  See [International Civil Aviation Organization airport code](https://en.wikipedia.org/wiki/International_Civil_Aviation_Organization_airport_code).
 
   ## Example
 

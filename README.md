@@ -43,6 +43,27 @@ config :wunderground, api_key: System.get_env("WUNDERGROUND_API_KEY")
 
 ## Usage
 
+### 🌖 Astronomy
+
+```elixir
+query = {:airport, "LEBL"}
+{:ok, astronomy} = Wunderground.astronomy(query)
+```
+
+### 🌤 Current Conditions
+
+```elixir
+query = {:us, "CA", "San_Francisco"}
+{:ok, conditions} = Wunderground.conditions(query)
+```
+
+### 📅 Forecast
+
+```elixir
+query = {:international, "Germany", "Berlin"}
+{:ok, forecast} = Wunderground.forecast(query)
+```
+
 ### 🔎 Different Queries
 
 🇺🇸 Cities in the U.S.
@@ -68,7 +89,8 @@ config :wunderground, api_key: System.get_env("WUNDERGROUND_API_KEY")
 
 ✈️ Airports
 ```elixir
-# by the airport code
+# by International Civil Aviation Organization airport code
+# see https://en.wikipedia.org/wiki/International_Civil_Aviation_Organization_airport_code
 {:airport, "KJFK"}
 ```
 
@@ -87,25 +109,11 @@ config :wunderground, api_key: System.get_env("WUNDERGROUND_API_KEY")
 {:auto_ip, {185, 1, 74, 1}}
 ```
 
-### 🌤 Current Conditions
-
-```elixir
-query = {:us, "CA", "San_Francisco"}
-{:ok, conditions} = Wunderground.conditions(query)
-```
-
-### 📅 Forecast
-
-```elixir
-query = {:international, "Germany", "Berlin"}
-{:ok, forecast} = Wunderground.forecast(query)
-```
-
 ## ☑️ TODOs
 
 -   [ ] Geolookup
 -   [ ] Autocomplete
 -   [x] Current conditions
 -   [x] 3-day forecast summary
--   [ ] Astronomy
+-   [x] Astronomy
 -   [ ] Almanac for today

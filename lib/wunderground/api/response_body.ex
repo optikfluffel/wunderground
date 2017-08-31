@@ -5,7 +5,7 @@ defmodule Wunderground.API.ResponseBody do
 
   @derive [Poison.Encoder]
 
-  defstruct ~w(response forecast current_observation)a
+  defstruct ~w(response forecast current_observation moon_phase)a
 
   @typedoc """
   The Wunderground.API.ResponseBody struct.
