@@ -4,6 +4,7 @@ defmodule Wunderground do
   """
 
   alias Wunderground.API
+  alias Wunderground.Almanac
   alias Wunderground.Astronomy
   alias Wunderground.Conditions
   alias Wunderground.Forecast
@@ -95,4 +96,33 @@ defmodule Wunderground do
   """
   @spec astronomy(Query.t) :: {:ok, Astronomy.Moonphase.t} | {:error, API.error}
   defdelegate astronomy(query), to: Astronomy, as: :get
+
+  @doc """
+  Gets the almanac for the given location.
+
+  ## Usage
+
+      # For the US using {:us, state, city} or {:us_zip, zipcode}
+      {:ok, almanac} = Wunderground.almanac({:us, "CA", "San_Francisco"})
+      {:ok, almanac} = Wunderground.almanac({:us_zip, 60290})
+
+      # International using {:international, country, city}
+      {:ok, almanac} = Wunderground.almanac({:international, "Australia", "Sydney"})
+
+      # Via coordinates using {:geo, lat, lng}
+      {:ok, almanac} = Wunderground.almanac({:geo, 37.8, -122.4})
+
+      # For an airport using {:airport, airport_code}
+      {:ok, almanac} = Wunderground.almanac({:airport, "KJFK"})
+
+      # For a specific personal weather station using {:pws, pws_id}
+      {:ok, almanac} = Wunderground.almanac({:pws, "KCASANFR70"})
+
+      # For the GeoIP location of the running machine using {:auto_ip}
+      # or any IP address using {:auto_ip, ip_adress}
+      {:ok, almanac} = Wunderground.almanac({:auto_ip})
+      {:ok, almanac} = Wunderground.almanac({:auto_ip, {185, 1, 74, 1}})
+  """
+  @spec almanac(Query.t) :: {:ok, Almanac.t} | {:error, API.error}
+  defdelegate almanac(query), to: Almanac, as: :get
 end

@@ -1,0 +1,31 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "http://api.wunderground.com/api/<<wunderground_api_key>>/almanac/q/auto_ip.json"
+    },
+    "response": {
+      "body": "\n{\n  \"response\": {\n  \"version\":\"0.1\",\n  \"termsofService\":\"http://www.wunderground.com/weather/api/d/terms.html\",\n  \"features\": {\n  \"almanac\": 1\n  }\n\t}\n\t\t,\n\t\"almanac\": {\n\t\t\"airport_code\": \"KLWB\",\n\t\t\"temp_high\": {\n\t\t\"normal\": {\n\t\t\"F\": \"79\",\n\t\t\"C\": \"26\"\n\t\t}\n\t\t,\n\t\t\"record\": {\n\t\t\"F\": \"90\",\n\t\t\"C\": \"32\"\n\t\t},\n\t\t\"recordyear\": \"2012\"\n\t\t},\n\t\t\"temp_low\": {\n\t\t\"normal\": {\n\t\t\"F\": \"55\",\n\t\t\"C\": \"13\"\n\t\t}\n\t\t,\n\t\t\"record\": {\n\t\t\"F\": \"41\",\n\t\t\"C\": \"5\"\n\t\t},\n\t\t\"recordyear\": \"1999\"\n\t\t}\n\t}\n}\n",
+      "headers": {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=UTF-8",
+        "Last-Modified": "Thu, 31 Aug 2017 12:42:23 GMT",
+        "Server": "Apache/2.2.15 (CentOS)",
+        "X-CreationTime": "0.053",
+        "Expires": "Thu, 31 Aug 2017 12:42:23 GMT",
+        "Cache-Control": "max-age=0, no-cache",
+        "Pragma": "no-cache",
+        "Date": "Thu, 31 Aug 2017 12:42:23 GMT",
+        "Content-Length": "469",
+        "Connection": "keep-alive"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
