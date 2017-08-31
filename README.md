@@ -43,6 +43,13 @@ config :wunderground, api_key: System.get_env("WUNDERGROUND_API_KEY")
 
 ## Usage
 
+### 🗓 Almanac
+
+```elixir
+query = {:us_zip, 11204}
+{:ok, almanac} = Wunderground.almanac(query)
+```
+
 ### 🌖 Astronomy
 
 ```elixir
