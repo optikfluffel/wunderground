@@ -6,7 +6,7 @@ defmodule WundergroundTest do
   alias Wunderground.Almanac
   alias Wunderground.Astronomy
   alias Wunderground.Conditions.Observation
-  alias Wunderground.Forecast.Result
+  alias Wunderground.Forecast
 
   describe "conditions/1" do
     test "us" do
@@ -61,49 +61,49 @@ defmodule WundergroundTest do
   describe "forecast/1" do
     test "us" do
       use_cassette "forecast/us" do
-        assert {:ok, %Result{}} = Wunderground.forecast({:us, "CA", "San_Francisco"})
+        assert {:ok, %Forecast{}} = Wunderground.forecast({:us, "CA", "San_Francisco"})
       end
     end
 
     test "us_zip" do
       use_cassette "forecast/us_zip" do
-        assert {:ok, %Result{}} = Wunderground.forecast({:us_zip, 60290})
+        assert {:ok, %Forecast{}} = Wunderground.forecast({:us_zip, 60290})
       end
     end
 
     test "international" do
       use_cassette "forecast/international" do
-        assert {:ok, %Result{}} = Wunderground.forecast({:international, "Australia", "Sydney"})
+        assert {:ok, %Forecast{}} = Wunderground.forecast({:international, "Australia", "Sydney"})
       end
     end
 
     test "geo" do
       use_cassette "forecast/geo" do
-        assert {:ok, %Result{}} = Wunderground.forecast({:geo, 37.8, -122.4})
+        assert {:ok, %Forecast{}} = Wunderground.forecast({:geo, 37.8, -122.4})
       end
     end
 
     test "airport" do
       use_cassette "forecast/airport" do
-        assert {:ok, %Result{}} = Wunderground.forecast({:airport, "KJFK"})
+        assert {:ok, %Forecast{}} = Wunderground.forecast({:airport, "KJFK"})
       end
     end
 
     test "pws" do
       use_cassette "forecast/pws" do
-        assert {:ok, %Result{}} = Wunderground.forecast({:pws, "KCASANFR70"})
+        assert {:ok, %Forecast{}} = Wunderground.forecast({:pws, "KCASANFR70"})
       end
     end
 
     test "auto_ip" do
       use_cassette "forecast/auto_ip" do
-        assert {:ok, %Result{}} = Wunderground.forecast({:auto_ip})
+        assert {:ok, %Forecast{}} = Wunderground.forecast({:auto_ip})
       end
     end
 
     test "auto_ip with given ip address" do
       use_cassette "forecast/auto_ip_custom" do
-        assert {:ok, %Result{}} = Wunderground.forecast({:auto_ip, {185, 1, 74, 1}})
+        assert {:ok, %Forecast{}} = Wunderground.forecast({:auto_ip, {185, 1, 74, 1}})
       end
     end
   end

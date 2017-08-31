@@ -65,7 +65,7 @@ defmodule Wunderground do
       {:ok, forecast} = Wunderground.forecast({:auto_ip})
       {:ok, forecast} = Wunderground.forecast({:auto_ip, {185, 1, 74, 1}})
   """
-  @spec forecast(Query.t) :: {:ok, Forecast.Result.t} | {:error, API.error}
+  @spec forecast(Query.t) :: {:ok, Forecast.t} | {:error, API.error}
   defdelegate forecast(query), to: Forecast, as: :get
 
   @doc """

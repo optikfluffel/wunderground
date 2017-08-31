@@ -19,7 +19,7 @@ defmodule Wunderground.API do
     end
   end
 
-  @spec get_forecast(String.t) :: {:ok, Wunderground.Forecast.Result.t} | {:error, error}
+  @spec get_forecast(String.t) :: {:ok, Wunderground.Forecast.t} | {:error, error}
   def get_forecast(query) do
     case get_with_query("/forecast", query) do
       {:ok, body} ->
@@ -80,7 +80,7 @@ defmodule Wunderground.API do
         display_location: %Wunderground.Conditions.DisplayLocation{},
         observation_location: %Wunderground.Conditions.ObservationLocation{}
       },
-      forecast: %Wunderground.Forecast.Result{
+      forecast: %Wunderground.Forecast{
         txt_forecast: %Wunderground.Forecast.TXTForecast{
           forecastday: [%Wunderground.Forecast.TXTForecastDay{}]
         },

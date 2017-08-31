@@ -14,7 +14,7 @@ defmodule Wunderground.API.ResponseBody do
   """
   @type t :: %__MODULE__{
     response: Wunderground.API.Response.t,
-    forecast: Wunderground.Forecast.Result.t,
+    forecast: Wunderground.Forecast.t,
     current_observation: Wunderground.Conditions.Observation.t,
     moon_phase: Wunderground.Astronomy.t,
     almanac: Wunderground.Almanac.t
