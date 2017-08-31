@@ -67,8 +67,15 @@ query = {:us, "CA", "San_Francisco"}
 ### 📅 Forecast
 
 ```elixir
-query = {:international, "Germany", "Berlin"}
+query = {:pws, "KCASANFR70"}
 {:ok, forecast} = Wunderground.forecast(query)
+```
+
+### 🗺 Geolookup
+
+```elixir
+query = {:international, "Germany", "Berlin"}
+{:ok, geolookup} = Wunderground.geolookup(query)
 ```
 
 ## Different Queries

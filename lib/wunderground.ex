@@ -35,7 +35,7 @@ defmodule Wunderground do
 
   ## Example
 
-      {:ok, forecast} = Wunderground.forecast({:international, "Australia", "Sydney"})
+      {:ok, forecast} = Wunderground.forecast({:pws, "KCASANFR70"})
 
   """
   @spec forecast(Query.t) :: {:ok, Forecast.t} | {:error, API.error}
@@ -72,7 +72,7 @@ defmodule Wunderground do
   defdelegate almanac(query), to: Almanac, as: :get
 
   @doc """
-  🗓 Gets the Geolookup for the given location.
+  🗺 Gets the Geolookup for the given location.
 
   ## Parameters
 
@@ -80,7 +80,7 @@ defmodule Wunderground do
 
   ## Example
 
-      {:ok, geolookup} = Wunderground.geolookup({:pws, "KCASANFR70"})
+      {:ok, geolookup} = Wunderground.geolookup({:international, "Australia", "Sydney"})
 
   """
   @spec geolookup(Query.t) :: {:ok, Geolookup.t} | {:error, API.error}
