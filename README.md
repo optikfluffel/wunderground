@@ -2,7 +2,7 @@
 
 A basic wrapper for the [Weather Underground API](https://www.wunderground.com/weather/api/d/docs).
 
-*Currently only suppors the [Stratus Plan](https://www.wunderground.com/weather/api/d/pricing.html) Endpoints.*
+*Currently only supports the [Stratus Plan](https://www.wunderground.com/weather/api/d/pricing.html) Endpoints.*
 *With a Stratus Developer key, you get up to 10 API calls per minute and/or 500 calls per day (which is roughly one call every three minutes).*
 
 [![Build Status](https://travis-ci.org/optikfluffel/wunderground.svg?branch=master)](https://travis-ci.org/optikfluffel/wunderground)
@@ -11,7 +11,7 @@ A basic wrapper for the [Weather Underground API](https://www.wunderground.com/w
 [![Version](http://img.shields.io/hexpm/v/wunderground.svg?style=flat)](https://hex.pm/packages/wunderground)
 [![License](https://img.shields.io/hexpm/l/wunderground.svg?style=flat)](https://unlicense.org)
 
-## Installation
+## 📦 Installation
 
 Add `wunderground` to your list of dependencies in `mix.exs`:
 
@@ -24,7 +24,7 @@ def deps do
 end
 ```
 
-## Configuration
+## 🔧 Configuration
 
 First go to [wunderground.com/weather/api](https://www.wunderground.com/weather/api/)
 and sign up/in to get your API key.
@@ -43,40 +43,65 @@ config :wunderground, api_key: System.get_env("WUNDERGROUND_API_KEY")
 
 ## Usage
 
-### Current Conditions
+### 🔎 Different Queries
 
+🇺🇸 Cities in the U.S.
 ```elixir
-# For the US using {:us, state, city} or {:us_zip, zipcode}
-{:ok, conditions} = Wunderground.conditions({:us, "CA", "San_Francisco"})
-{:ok, conditions} = Wunderground.conditions({:us_zip, 60290})
+# using state/city
+{:us, "CA", "San_Francisco"}
 
-# International using {:international, country, city}
-{:ok, conditions} = Wunderground.conditions({:international, "Australia", "Sydney"})
-
-# Via coordinates using {:geo, lat, lng}
-{:ok, conditions} = Wunderground.conditions({:geo, 37.8, -122.4})
-
-# For an airport using {:airport, airport_code}
-{:ok, conditions} = Wunderground.conditions({:airport, "KJFK"})
-
-# For a specific personal weather station using {:pws, pws_id}
-{:ok, conditions} = Wunderground.conditions({:pws, "KCASANFR70"})
-
-# For the GeoIP location of the running machine using {:auto_ip}
-# or any IP address using {:auto_ip, ip_adress}
-{:ok, conditions} = Wunderground.conditions({:auto_ip})
-{:ok, conditions} = Wunderground.conditions({:auto_ip, {185, 1, 74, 1}})
+# or via zipcode
+{:us_zip, 60290}
 ```
 
-### Forecast
-
-You can use the same Queries as with [Current Conditions](#current-conditions).
-
+🌍 Cities outside the U.S.
 ```elixir
-{:ok, forecast} = Wunderground.forecast({:international, "Germany", "Berlin"})
+# by country and city
+{:international, "Australia", "Sydney"}
 ```
 
-## TODO
+🌐 Coordinates
+```elixir
+# by latidute and longitude
+{:geo, 37.8, -122.4}
+```
+
+✈️ Airports
+```elixir
+# by the airport code
+{:airport, "KJFK"}
+```
+
+🌡 Specific personal weather station
+```elixir
+# by it's ID
+{:pws, "KCASANFR70"}
+```
+
+📍 GeoIP location
+```elixir
+# of the running machine using
+{:auto_ip}
+
+# or of a specific IP address
+{:auto_ip, {185, 1, 74, 1}}
+```
+
+### 🌤 Current Conditions
+
+```elixir
+query = {:us, "CA", "San_Francisco"}
+{:ok, conditions} = Wunderground.conditions(query)
+```
+
+### 📅 Forecast
+
+```elixir
+query = {:international, "Germany", "Berlin"}
+{:ok, forecast} = Wunderground.forecast(query)
+```
+
+## ☑️ TODOs
 
 -   [ ] Geolookup
 -   [ ] Autocomplete
