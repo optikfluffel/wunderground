@@ -8,6 +8,7 @@ defmodule Wunderground do
   alias Wunderground.Astronomy
   alias Wunderground.Conditions
   alias Wunderground.Forecast
+  alias Wunderground.Geolookup
   alias Wunderground.Query
 
   @doc """
@@ -64,10 +65,24 @@ defmodule Wunderground do
 
   ## Example
 
-      # For an airport using {:airport, airport_code}
       {:ok, almanac} = Wunderground.almanac({:airport, "KJFK"})
 
   """
   @spec almanac(Query.t) :: {:ok, Almanac.t} | {:error, API.error}
   defdelegate almanac(query), to: Almanac, as: :get
+
+  @doc """
+  🗓 Gets the Geolookup for the given location.
+
+  ## Parameters
+
+    - query: A `Wunderground.Query` that represents a location.
+
+  ## Example
+
+      {:ok, geolookup} = Wunderground.geolookup({:pws, "KCASANFR70"})
+
+  """
+  @spec geolookup(Query.t) :: {:ok, Geolookup.t} | {:error, API.error}
+  defdelegate geolookup(query), to: Geolookup, as: :get
 end

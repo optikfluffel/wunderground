@@ -1,0 +1,31 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "http://api.wunderground.com/api/<<wunderground_api_key>>/geolookup/q/CA/San_Francisco.json"
+    },
+    "response": {
+      "body": "\n{\n  \"response\": {\n  \"version\":\"0.1\",\n  \"termsofService\":\"http://www.wunderground.com/weather/api/d/terms.html\",\n  \"features\": {\n  \"geolookup\": 1\n  }\n\t}\n\t\t,\t\"location\": {\n\t\t\"type\":\"CITY\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"country_name\":\"USA\",\n\t\t\"state\":\"CA\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"tz_short\":\"PDT\",\n\t\t\"tz_long\":\"America/Los_Angeles\",\n\t\t\"lat\":\"37.77999878\",\n\t\t\"lon\":\"-122.41999817\",\n\t\t\"zip\":\"94102\",\n\t\t\"magic\":\"1\",\n\t\t\"wmo\":\"99999\",\n\t\t\"l\":\"/q/zmw:94102.1.99999\",\n\t\t\"requesturl\":\"US/CA/San_Francisco.html\",\n\t\t\"wuiurl\":\"https://www.wunderground.com/US/CA/San_Francisco.html\",\n\t\t\"nearby_weather_stations\": {\n\t\t\"airport\": {\n\t\t\"station\": [\n\t\t{ \"city\":\"San Francisco\", \"state\":\"CA\", \"country\":\"US\", \"icao\":\"KSFO\", \"lat\":\"37.61999893\", \"lon\":\"-122.37000275\" }\n\t\t,{ \"city\":\"Oakland\", \"state\":\"CA\", \"country\":\"US\", \"icao\":\"KOAK\", \"lat\":\"37.72000122\", \"lon\":\"-122.22000122\" }\n\t\t,{ \"city\":\"Hayward\", \"state\":\"CA\", \"country\":\"US\", \"icao\":\"KHWD\", \"lat\":\"37.65999985\", \"lon\":\"-122.12000275\" }\n\t\t,{ \"city\":\"Half Moon Bay\", \"state\":\"CA\", \"country\":\"US\", \"icao\":\"KHAF\", \"lat\":\"37.50999832\", \"lon\":\"-122.50000000\" }\n\t\t]\n\t\t}\n\t\t,\n\t\t\"pws\": {\n\t\t\"station\": [\n\t\t{\n\t\t\"neighborhood\":\"San Francisco\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR1050\",\n\t\t\"lat\":37.776947,\n\t\t\"lon\":-122.423325,\n\t\t\"distance_km\":0,\n\t\t\"distance_mi\":0\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"Western Addition\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR1139\",\n\t\t\"lat\":37.781612,\n\t\t\"lon\":-122.431908,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":0\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"SOMA\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR131\",\n\t\t\"lat\":37.778488,\n\t\t\"lon\":-122.408005,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":0\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"North Mission (Valencia and Market)\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR49\",\n\t\t\"lat\":37.770599,\n\t\t\"lon\":-122.423500,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":0\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"Western Addition\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR368\",\n\t\t\"lat\":37.787674,\n\t\t\"lon\":-122.427856,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":0\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"San Francisco\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR1105\",\n\t\t\"lat\":37.781734,\n\t\t\"lon\":-122.432381,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":0\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"Lower Haight\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR438\",\n\t\t\"lat\":37.773457,\n\t\t\"lon\":-122.433182,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":0\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"Nob Hill\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR575\",\n\t\t\"lat\":37.792255,\n\t\t\"lon\":-122.415962,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":0\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"Lower Haight\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR902\",\n\t\t\"lat\":37.771694,\n\t\t\"lon\":-122.432228,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":0\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"Mission Dolores\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR1099\",\n\t\t\"lat\":37.766209,\n\t\t\"lon\":-122.424431,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":0\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"Western Addition\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR1060\",\n\t\t\"lat\":37.782047,\n\t\t\"lon\":-122.438248,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":0\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"Nob Hill\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR296\",\n\t\t\"lat\":37.794266,\n\t\t\"lon\":-122.414932,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":0\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"The Castro\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR938\",\n\t\t\"lat\":37.766399,\n\t\t\"lon\":-122.427544,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":0\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"Dolores Plaza\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR1051\",\n\t\t\"lat\":37.765476,\n\t\t\"lon\":-122.424904,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":1\n\t\t},\n\t\t{\n\t\t\"neighborhood\":\"SoMa (7th&Brannan) (Prasad)\",\n\t\t\"city\":\"San Francisco\",\n\t\t\"state\":\"CA\",\n\t\t\"country\":\"US\",\n\t\t\"id\":\"KCASANFR914\",\n\t\t\"lat\":37.773605,\n\t\t\"lon\":-122.402252,\n\t\t\"distance_km\":1,\n\t\t\"distance_mi\":1\n\t\t}\n\t\t]\n\t\t}\n\t\t}\n\t}\n}\n",
+      "headers": {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=UTF-8",
+        "Last-Modified": "Thu, 31 Aug 2017 19:44:17 GMT",
+        "Server": "Apache/2.2.15 (CentOS)",
+        "X-CreationTime": "0.148",
+        "Expires": "Thu, 31 Aug 2017 19:44:17 GMT",
+        "Cache-Control": "max-age=0, no-cache",
+        "Pragma": "no-cache",
+        "Date": "Thu, 31 Aug 2017 19:44:17 GMT",
+        "Content-Length": "4227",
+        "Connection": "keep-alive"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

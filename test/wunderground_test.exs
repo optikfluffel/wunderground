@@ -7,6 +7,7 @@ defmodule WundergroundTest do
   alias Wunderground.Astronomy
   alias Wunderground.Conditions
   alias Wunderground.Forecast
+  alias Wunderground.Geolookup
 
   test "conditions/1" do
     use_cassette "conditions/us" do
@@ -29,6 +30,12 @@ defmodule WundergroundTest do
   test "almanac/1" do
     use_cassette "almanac/geo" do
       assert {:ok, %Almanac{}} = Wunderground.almanac({:geo, 37.8, -122.4})
+    end
+  end
+
+  test "geolookup/1" do
+    use_cassette "geolookup/airport" do
+      assert {:ok, %Geolookup{}} = Wunderground.geolookup({:airport, "KJFK"})
     end
   end
 end
