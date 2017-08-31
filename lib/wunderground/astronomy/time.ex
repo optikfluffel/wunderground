@@ -8,7 +8,7 @@ defmodule Wunderground.Astronomy.Time do
   defstruct ~w(hour minute)a
 
   @typedoc """
-  The Wunderground.Astronomy.Moonphase struct.
+  The Wunderground.Astronomy.Time struct.
 
   ## Example
 

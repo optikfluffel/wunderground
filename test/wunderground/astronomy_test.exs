@@ -4,7 +4,6 @@ defmodule Wunderground.AstronomyTest do
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   alias Wunderground.Astronomy
-  alias Wunderground.Astronomy.Moonphase
 
   @not_found {:not_found, "No cities match your search query"}
   @station_offline {:station_offline, "The station you're looking for either doesn't exist or is simply offline right now."}
@@ -12,7 +11,7 @@ defmodule Wunderground.AstronomyTest do
   describe "get/1" do
     test "us" do
       use_cassette "astronomy/us" do
-        assert {:ok, %Moonphase{}} = Astronomy.get({:us, "CA", "San_Francisco"})
+        assert {:ok, %Astronomy{}} = Astronomy.get({:us, "CA", "San_Francisco"})
       end
     end
 
@@ -24,7 +23,7 @@ defmodule Wunderground.AstronomyTest do
 
     test "us_zip" do
       use_cassette "astronomy/us_zip" do
-        assert {:ok, %Moonphase{}} = Astronomy.get({:us_zip, 60290})
+        assert {:ok, %Astronomy{}} = Astronomy.get({:us_zip, 60290})
       end
     end
 
@@ -36,7 +35,7 @@ defmodule Wunderground.AstronomyTest do
 
     test "international" do
       use_cassette "astronomy/international" do
-        assert {:ok, %Moonphase{}} = Astronomy.get({:international, "Australia", "Sydney"})
+        assert {:ok, %Astronomy{}} = Astronomy.get({:international, "Australia", "Sydney"})
       end
     end
 
@@ -48,7 +47,7 @@ defmodule Wunderground.AstronomyTest do
 
     test "geo" do
       use_cassette "astronomy/geo" do
-        assert {:ok, %Moonphase{}} = Astronomy.get({:geo, 37.8, -122.4})
+        assert {:ok, %Astronomy{}} = Astronomy.get({:geo, 37.8, -122.4})
       end
     end
 
@@ -60,7 +59,7 @@ defmodule Wunderground.AstronomyTest do
 
     test "airport" do
       use_cassette "astronomy/airport" do
-        assert {:ok, %Moonphase{}} = Astronomy.get({:airport, "KJFK"})
+        assert {:ok, %Astronomy{}} = Astronomy.get({:airport, "KJFK"})
       end
     end
 
@@ -72,7 +71,7 @@ defmodule Wunderground.AstronomyTest do
 
     test "pws" do
       use_cassette "astronomy/pws" do
-        assert {:ok, %Moonphase{}} = Astronomy.get({:pws, "KCASANFR70"})
+        assert {:ok, %Astronomy{}} = Astronomy.get({:pws, "KCASANFR70"})
       end
     end
 
@@ -84,13 +83,13 @@ defmodule Wunderground.AstronomyTest do
 
     test "auto_ip" do
       use_cassette "astronomy/auto_ip" do
-        assert {:ok, %Moonphase{}} = Astronomy.get({:auto_ip})
+        assert {:ok, %Astronomy{}} = Astronomy.get({:auto_ip})
       end
     end
 
     test "auto_ip with given ip address" do
       use_cassette "astronomy/auto_ip_custom" do
-        assert {:ok, %Moonphase{}} = Astronomy.get({:auto_ip, {185, 1, 74, 1}})
+        assert {:ok, %Astronomy{}} = Astronomy.get({:auto_ip, {185, 1, 74, 1}})
       end
     end
 

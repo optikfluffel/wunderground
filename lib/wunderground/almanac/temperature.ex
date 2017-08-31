@@ -10,11 +10,11 @@ defmodule Wunderground.Almanac.Temperature do
   defstruct ~w(normal record recordyear)a
 
   @typedoc """
-  The Wunderground.Astronomy.Moonphase struct.
+  The Wunderground.Almanac.Temperature struct.
 
   ## Example
 
-      %Wunderground.Astronomy.Temperature{
+      %Wunderground.Almanac.Temperature{
         normal: "16",
         record: "21",
         recordyear: "21"

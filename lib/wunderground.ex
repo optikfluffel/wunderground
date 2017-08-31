@@ -94,7 +94,7 @@ defmodule Wunderground do
       {:ok, astronomy} = Wunderground.astronomy({:auto_ip})
       {:ok, astronomy} = Wunderground.astronomy({:auto_ip, {185, 1, 74, 1}})
   """
-  @spec astronomy(Query.t) :: {:ok, Astronomy.Moonphase.t} | {:error, API.error}
+  @spec astronomy(Query.t) :: {:ok, Astronomy.t} | {:error, API.error}
   defdelegate astronomy(query), to: Astronomy, as: :get
 
   @doc """

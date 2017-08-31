@@ -8,11 +8,11 @@ defmodule Wunderground.Almanac.TemperaturePair do
   defstruct ~w(F C)a
 
   @typedoc """
-  The Wunderground.Astronomy.Moonphase struct.
+  The Wunderground.Almanac.TemperaturePair struct.
 
   ## Example
 
-      %Wunderground.Astronomy.Temperature{
+      %Wunderground.Almanac.TemperaturePair{
         F: "16",
         C: "21"
       }

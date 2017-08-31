@@ -7,10 +7,6 @@ defmodule Wunderground.Conditions do
   alias Wunderground.API
   alias Wunderground.Conditions.Observation
 
-  @derive [Poison.Encoder]
-
-  defstruct ~w(response current_observation)a
-
   @doc """
   Gets the current conditions for the given tuple.
 
