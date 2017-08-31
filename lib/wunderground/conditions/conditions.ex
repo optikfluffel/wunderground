@@ -24,11 +24,11 @@ defmodule Wunderground.Conditions do
                history_url ob_url)a
 
   @typedoc """
-  The Wunderground.Conditions.Observation struct.
+  The Wunderground.Conditions struct.
 
   ## Example
 
-      %Wunderground.Conditions.Observation{
+      %Wunderground.Conditions{
         observation_time: "Last Updated on August 23, 7:57 PM CEST",
         pressure_in: "30.08",
         wind_kph: 1.0,
