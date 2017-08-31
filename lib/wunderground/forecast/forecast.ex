@@ -11,7 +11,20 @@ defmodule Wunderground.Forecast do
   @derive [Poison.Encoder]
   defstruct ~w(simpleforecast txt_forecast)a
 
-  @type t :: %__MODULE__{simpleforecast: SimpleForecast.t, txt_forecast: TXTForecast.t}
+  @typedoc """
+  The Wunderground.Forecast struct.
+
+  ## Example
+
+      %Wunderground.Forecast{
+        simpleforecast: %Wunderground.Forecast.SimpleForecast{...},
+        txt_forecast: %Wunderground.Forecast.TXTForecast{...}
+      }
+  """
+  @type t :: %__MODULE__{
+    simpleforecast: SimpleForecast.t,
+    txt_forecast: TXTForecast.t
+  }
 
   @doc """
   Gets the forecast for the given tuple.
