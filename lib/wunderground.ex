@@ -36,7 +36,7 @@ defmodule Wunderground do
       {:ok, conditions} = Wunderground.conditions({:auto_ip})
       {:ok, conditions} = Wunderground.conditions({:auto_ip, {185, 1, 74, 1}})
   """
-  @spec conditions(Query.t) :: {:ok, Conditions.Observation.t} | {:error, API.error}
+  @spec conditions(Query.t) :: {:ok, Conditions.t} | {:error, API.error}
   defdelegate conditions(query), to: Conditions, as: :get
 
   @doc """

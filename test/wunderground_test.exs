@@ -5,55 +5,55 @@ defmodule WundergroundTest do
 
   alias Wunderground.Almanac
   alias Wunderground.Astronomy
-  alias Wunderground.Conditions.Observation
+  alias Wunderground.Conditions
   alias Wunderground.Forecast
 
   describe "conditions/1" do
     test "us" do
       use_cassette "conditions/us" do
-        assert {:ok, %Observation{}} = Wunderground.conditions({:us, "CA", "San_Francisco"})
+        assert {:ok, %Conditions{}} = Wunderground.conditions({:us, "CA", "San_Francisco"})
       end
     end
 
     test "us_zip" do
       use_cassette "conditions/us_zip" do
-        assert {:ok, %Observation{}} = Wunderground.conditions({:us_zip, 60290})
+        assert {:ok, %Conditions{}} = Wunderground.conditions({:us_zip, 60290})
       end
     end
 
     test "international" do
       use_cassette "conditions/international" do
-        assert {:ok, %Observation{}} = Wunderground.conditions({:international, "Australia", "Sydney"})
+        assert {:ok, %Conditions{}} = Wunderground.conditions({:international, "Australia", "Sydney"})
       end
     end
 
     test "geo" do
       use_cassette "conditions/geo" do
-        assert {:ok, %Observation{}} = Wunderground.conditions({:geo, 37.8, -122.4})
+        assert {:ok, %Conditions{}} = Wunderground.conditions({:geo, 37.8, -122.4})
       end
     end
 
     test "airport" do
       use_cassette "conditions/airport" do
-        assert {:ok, %Observation{}} = Wunderground.conditions({:airport, "KJFK"})
+        assert {:ok, %Conditions{}} = Wunderground.conditions({:airport, "KJFK"})
       end
     end
 
     test "pws" do
       use_cassette "conditions/pws" do
-        assert {:ok, %Observation{}} = Wunderground.conditions({:pws, "KCASANFR70"})
+        assert {:ok, %Conditions{}} = Wunderground.conditions({:pws, "KCASANFR70"})
       end
     end
 
     test "auto_ip" do
       use_cassette "conditions/auto_ip" do
-        assert {:ok, %Observation{}} = Wunderground.conditions({:auto_ip})
+        assert {:ok, %Conditions{}} = Wunderground.conditions({:auto_ip})
       end
     end
 
     test "auto_ip with given ip address" do
       use_cassette "conditions/auto_ip_custom" do
-        assert {:ok, %Observation{}} = Wunderground.conditions({:auto_ip, {185, 1, 74, 1}})
+        assert {:ok, %Conditions{}} = Wunderground.conditions({:auto_ip, {185, 1, 74, 1}})
       end
     end
   end

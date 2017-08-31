@@ -9,7 +9,7 @@ defmodule Wunderground.API do
   @type error_message :: String.t
   @type error :: {error_type, error_message}
 
-  @spec get_conditions(String.t) :: {:ok, Wunderground.Conditions.Observation.t} | {:error, error}
+  @spec get_conditions(String.t) :: {:ok, Wunderground.Conditions.t} | {:error, error}
   def get_conditions(query) do
     case get_with_query("/conditions", query) do
       {:ok, body} ->
@@ -75,7 +75,7 @@ defmodule Wunderground.API do
       response: %Wunderground.API.Response{
         error: %Wunderground.API.Error{}
       },
-      current_observation: %Wunderground.Conditions.Observation{
+      current_observation: %Wunderground.Conditions{
         image: %Wunderground.Conditions.Image{},
         display_location: %Wunderground.Conditions.DisplayLocation{},
         observation_location: %Wunderground.Conditions.ObservationLocation{}

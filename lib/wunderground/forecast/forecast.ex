@@ -5,6 +5,8 @@ defmodule Wunderground.Forecast do
 
   alias Wunderground.API
   alias Wunderground.Query
+  alias Wunderground.Forecast.SimpleForecast
+  alias Wunderground.Forecast.TXTForecast
 
   @derive [Poison.Encoder]
   defstruct ~w(simpleforecast txt_forecast)a
