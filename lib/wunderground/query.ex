@@ -12,18 +12,15 @@ defmodule Wunderground.Query do
       # or via zipcode
       {:us_zip, 60290}
 
-
   🌍 Cities outside the U.S.
 
       # by country and city
       {:international, "Australia", "Sydney"}
 
-
   🌐 Coordinates
 
       # by latidute and longitude
       {:geo, 37.8, -122.4}
-
 
   ✈️ Airports
 
@@ -31,12 +28,10 @@ defmodule Wunderground.Query do
       # see https://en.wikipedia.org/wiki/International_Civil_Aviation_Organization_airport_code
       {:airport, "KJFK"}
 
-
   🌡 Specific personal weather station
 
       # by it's ID
       {:pws, "KCASANFR70"}
-
 
   📍 GeoIP location
 
