@@ -29,6 +29,16 @@ defmodule Wunderground.API do
     end
   end
 
+  @spec get_astronomy(String.t) :: {:ok, Wunderground.Astronomy.Moonphase.t} | {:error, error}
+  def get_astronomy(query) do
+    case get_with_query("/astronomy", query) do
+      {:ok, body} ->
+        {:ok, body.moon_phase}
+      {:error, error} ->
+        {:error, error}
+    end
+  end
+
   defp get_with_query(path, query) do
     case get(path <> query) do
       {:error, error} ->
@@ -81,6 +91,13 @@ defmodule Wunderground.API do
             }
           ]
         },
+      },
+      moon_phase: %Wunderground.Astronomy.Moonphase{
+        current_time: %Wunderground.Astronomy.Time{},
+        moonrise: %Wunderground.Astronomy.Time{},
+        moonset: %Wunderground.Astronomy.Time{},
+        sunrise: %Wunderground.Astronomy.Time{},
+        sunset: %Wunderground.Astronomy.Time{}
       }
     })
 
