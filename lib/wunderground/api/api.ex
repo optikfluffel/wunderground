@@ -49,6 +49,16 @@ defmodule Wunderground.API do
     end
   end
 
+  @spec geolookup(String.t) :: {:ok, Wunderground.Geolookup.t} | {:error, error}
+  def geolookup(query) do
+    case get_with_query("/geolookup", query) do
+      {:ok, body} ->
+        {:ok, body.location}
+      {:error, error} ->
+        {:error, error}
+    end
+  end
+
   defp get_with_query(path, query) do
     case get(path <> query) do
       {:error, error} ->
@@ -117,6 +127,16 @@ defmodule Wunderground.API do
         temp_low: %Wunderground.Almanac.Temperature{
           normal: %Wunderground.Almanac.TemperaturePair{},
           record: %Wunderground.Almanac.TemperaturePair{}
+        }
+      },
+      location: %Wunderground.Geolookup{
+        nearby_weather_stations: %Wunderground.Geolookup.NearbyWeatherStations{
+          airport: %Wunderground.Geolookup.StationWrapper{
+            station: [%Wunderground.Geolookup.AirportStation{}]
+          },
+          pws: %Wunderground.Geolookup.StationWrapper{
+            station: [%Wunderground.Geolookup.PWSStation{}]
+          }
         }
       }
     })

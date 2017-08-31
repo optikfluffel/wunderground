@@ -19,7 +19,7 @@ Add `wunderground` to your list of dependencies in `mix.exs`:
 def deps do
   [
     # ...
-    {:wunderground, "~> 0.0.7"}
+    {:wunderground, "~> 0.0.8"}
   ]
 end
 ```
@@ -67,8 +67,15 @@ query = {:us, "CA", "San_Francisco"}
 ### 📅 Forecast
 
 ```elixir
-query = {:international, "Germany", "Berlin"}
+query = {:pws, "KCASANFR70"}
 {:ok, forecast} = Wunderground.forecast(query)
+```
+
+### 🗺 Geolookup
+
+```elixir
+query = {:international, "Germany", "Berlin"}
+{:ok, geolookup} = Wunderground.geolookup(query)
 ```
 
 ## Different Queries
@@ -118,7 +125,7 @@ query = {:international, "Germany", "Berlin"}
 
 ## ☑️ TODOs
 
--   [ ] Geolookup
+-   [x] Geolookup
 -   [ ] Autocomplete
 -   [x] Current conditions
 -   [x] 3-day forecast summary
