@@ -11,7 +11,7 @@ defmodule Wunderground do
   alias Wunderground.Query
 
   @doc """
-  Gets the current conditions for the given location.
+  🌤 Gets the current conditions for the given location.
 
   ## Parameters
 
@@ -26,7 +26,7 @@ defmodule Wunderground do
   defdelegate conditions(query), to: Conditions, as: :get
 
   @doc """
-  Gets the forecast for the given location.
+  📅 Gets the forecast for the given location.
 
   ## Parameters
 
@@ -41,7 +41,7 @@ defmodule Wunderground do
   defdelegate forecast(query), to: Forecast, as: :get
 
   @doc """
-  Gets the astronomy for the given location.
+  🌖 Gets the astronomy for the given location.
 
   ## Parameters
 
@@ -56,7 +56,7 @@ defmodule Wunderground do
   defdelegate astronomy(query), to: Astronomy, as: :get
 
   @doc """
-  Gets the almanac for the given location.
+  🗓 Gets the almanac for the given location.
 
   ## Parameters
 
