@@ -1,9 +1,10 @@
 # Wunderground
 
+[![Wunderground](https://icons.wxug.com/logos/PNG/wundergroundLogo_4c_horz.png)](https://www.wunderground.com)
+
 A basic wrapper for the [Weather Underground API](https://www.wunderground.com/weather/api/d/docs).
 
-*Currently only supports the [Stratus Plan](https://www.wunderground.com/weather/api/d/pricing.html) Endpoints.*
-*With a Stratus Developer key, you get up to 10 API calls per minute and/or 500 calls per day (which is roughly one call every three minutes).*
+*Currently only supports the [Stratus Plan](https://www.wunderground.com/weather/api/d/pricing.html) Endpoints. With a Stratus Developer key, you get up to 10 API calls per minute and/or 500 calls per day (which is roughly one call every three minutes).*
 
 [![Build Status](https://travis-ci.org/optikfluffel/wunderground.svg?branch=master)](https://travis-ci.org/optikfluffel/wunderground)
 [![Coveralls](https://img.shields.io/coveralls/optikfluffel/wunderground.svg)](https://coveralls.io/github/optikfluffel/wunderground)
@@ -131,3 +132,7 @@ query = {:international, "Germany", "Berlin"}
 -   [x] 3-day forecast summary
 -   [x] Astronomy
 -   [x] Almanac for today
+
+---
+
+*Weather Underground is a registered trademark of The Weather Channel, LLC. both in the United States and internationally. The Weather Underground Logo is a trademark of Weather Underground, LLC.*
