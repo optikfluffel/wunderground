@@ -9,13 +9,6 @@ defmodule Wunderground.ForecastTest do
   @not_found {:not_found, "No cities match your search query"}
   @station_offline {:station_offline, "The station you're looking for either doesn't exist or is simply offline right now."}
 
-  setup_all do
-    HTTPoison.start()
-    ExVCR.Config.filter_url_params(true)
-
-    :ok
-  end
-
   describe "get/1" do
     test "us" do
       use_cassette "forecast/us" do

@@ -19,7 +19,7 @@ Add `wunderground` to your list of dependencies in `mix.exs`:
 def deps do
   [
     # ...
-    {:wunderground, "~> 0.0.5"}
+    {:wunderground, "~> 0.0.6"}
   ]
 end
 ```
@@ -42,6 +42,13 @@ config :wunderground, api_key: System.get_env("WUNDERGROUND_API_KEY")
 ```
 
 ## Usage
+
+### 🗓 Almanac
+
+```elixir
+query = {:us_zip, 11204}
+{:ok, almanac} = Wunderground.almanac(query)
+```
 
 ### 🌖 Astronomy
 

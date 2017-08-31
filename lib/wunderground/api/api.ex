@@ -39,6 +39,16 @@ defmodule Wunderground.API do
     end
   end
 
+  @spec get_almanac(String.t) :: {:ok, Wunderground.Almanac.t} | {:error, error}
+  def get_almanac(query) do
+    case get_with_query("/almanac", query) do
+      {:ok, body} ->
+        {:ok, body.almanac}
+      {:error, error} ->
+        {:error, error}
+    end
+  end
+
   defp get_with_query(path, query) do
     case get(path <> query) do
       {:error, error} ->
@@ -98,6 +108,16 @@ defmodule Wunderground.API do
         moonset: %Wunderground.Astronomy.Time{},
         sunrise: %Wunderground.Astronomy.Time{},
         sunset: %Wunderground.Astronomy.Time{}
+      },
+      almanac: %Wunderground.Almanac{
+        temp_high: %Wunderground.Almanac.Temperature{
+          normal: %Wunderground.Almanac.TemperaturePair{},
+          record: %Wunderground.Almanac.TemperaturePair{}
+        },
+        temp_low: %Wunderground.Almanac.Temperature{
+          normal: %Wunderground.Almanac.TemperaturePair{},
+          record: %Wunderground.Almanac.TemperaturePair{}
+        }
       }
     })
 
