@@ -123,4 +123,4 @@ query = {:international, "Germany", "Berlin"}
 -   [x] Current conditions
 -   [x] 3-day forecast summary
 -   [x] Astronomy
--   [ ] Almanac for today
+-   [x] Almanac for today
