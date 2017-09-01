@@ -5,7 +5,7 @@ defmodule Wunderground.API do
 
   require Logger
 
-  @type error_type :: :invalid_api_key | :not_found | :station_offline | String.t
+  @type error_type :: :invalid_api_key | :not_found | :station_offline | :http_error | String.t
   @type error_message :: String.t
   @type error :: {error_type, error_message}
 
@@ -59,18 +59,30 @@ defmodule Wunderground.API do
     end
   end
 
+  @spec get_with_query(String.t, String.t) :: {:ok, any} | {:error, error}
   defp get_with_query(path, query) do
     case get(path <> query) do
-      {:error, error} ->
-        Logger.warn "Error while #{path <> query}:"
-        Logger.warn inspect(error)
-        {:error, error}
-
-      {:ok, %HTTPoison.Response{body: {:error, error}, status_code: 200}} ->
-        {:error, error}
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        {:error, {:http_error, reason}}
 
       {:ok, %HTTPoison.Response{body: body, status_code: 200}} ->
-        {:ok, body}
+        case body.response.error do
+          %Wunderground.API.Error{description: description, type: "querynotfound"} ->
+            {:error, {:not_found, description}}
+
+          %Wunderground.API.Error{description: description, type: "keynotfound"} ->
+            {:error, {:invalid_api_key, description}}
+
+          %Wunderground.API.Error{type: "Station:OFFLINE"} ->
+            msg = "The station you're looking for either doesn't exist or is simply offline right now."
+            {:error, {:station_offline, msg}}
+
+          %Wunderground.API.Error{description: description, type: error_type} ->
+            {:error, {error_type, description}}
+
+          nil ->
+            {:ok, body}
+        end
     end
   end
 
@@ -81,7 +93,7 @@ defmodule Wunderground.API do
   end
 
   def process_response_body(body) do
-    decoded = Poison.decode!(body, as: %Wunderground.API.ResponseBody{
+    Poison.decode!(body, as: %Wunderground.API.ResponseBody{
       response: %Wunderground.API.Response{
         error: %Wunderground.API.Error{}
       },
@@ -140,26 +152,6 @@ defmodule Wunderground.API do
         }
       }
     })
-
-    case decoded.response.error do
-      %Wunderground.API.Error{description: description, type: "querynotfound"} ->
-        {:error, {:not_found, description}}
-
-      %Wunderground.API.Error{description: description, type: "keynotfound"} ->
-        {:error, {:invalid_api_key, description}}
-
-      %Wunderground.API.Error{type: "Station:OFFLINE"} ->
-        msg = "The station you're looking for either doesn't exist or is simply offline right now."
-        {:error, {:station_offline, msg}}
-
-      %Wunderground.API.Error{description: description, type: error_type} ->
-        Logger.warn "Unhandled error: " <> error_type
-        Logger.warn "with description: " <> description
-        {:error, {error_type, description}}
-
-      nil ->
-        decoded
-    end
   end
 
   # ---------------------------------------- PRIVATE HELPER
