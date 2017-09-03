@@ -21,11 +21,12 @@ defmodule Wunderground.Autocomplete.Result do
         tzs: "PDT",
         l: "/q/zmw:94102.1.99999",
         lat: "37.779999",
-        lon: "-122.419998"
-        date: "<<hurricanes only>>",
-        strmnum: "<<hurricanes only>>",
-        basin: "<<hurricanes only>>",
-        damage: "<<hurricanes only>>"
+        lon: "-122.419998",
+        # hurricanes only
+        date: nil,
+        strmnum: nil,
+        basin: nil,
+        damage: nil
       }
 
   """

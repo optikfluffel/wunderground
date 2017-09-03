@@ -4,6 +4,8 @@ defmodule Wunderground.Autocomplete do
   """
 
   alias Wunderground.Autocomplete.API
+  alias Wunderground.Autocomplete.City
+  alias Wunderground.Autocomplete.Hurricane
 
   @derive [Poison.Encoder]
 
@@ -13,8 +15,8 @@ defmodule Wunderground.Autocomplete do
   @type options :: list(option)
 
   @type t :: %__MODULE__{
-    cities: list(Wunderground.Autocomplete.Result.t),
-    hurricanes: list(Wunderground.Autocomplete.Result.t)
+    cities: list(City.t),
+    hurricanes: list(Hurricane.t)
   }
 
   @spec get(String.t, options) :: {:ok, __MODULE__.t} | {:error, API.error}

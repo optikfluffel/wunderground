@@ -3,6 +3,8 @@ defmodule Wunderground.Autocomplete.API do
 
   alias Wunderground.Autocomplete.Response
   alias Wunderground.Autocomplete.Result
+  alias Wunderground.Autocomplete.City
+  alias Wunderground.Autocomplete.Hurricane
 
   use HTTPoison.Base
 
@@ -29,7 +31,7 @@ defmodule Wunderground.Autocomplete.API do
       {:ok, %HTTPoison.Response{body: %Response{} = body, status_code: 200}} ->
         grouped = body
         |> Map.get(:RESULTS)
-        |> Enum.group_by(fn (x) -> x.type end)
+        |> Enum.group_by(&by_type/1, &specify_result/1)
 
         autocomplete = %Wunderground.Autocomplete{
           cities: grouped["city"],
@@ -41,5 +43,32 @@ defmodule Wunderground.Autocomplete.API do
       {:error, error} ->
         {:error, error}
     end
+  end
+
+  @spec by_type(Result.t) :: String.t
+  defp by_type(%Result{type: type}), do: type
+
+  @spec specify_result(Result.t) :: City.t | Hurricane.t
+  defp specify_result(%Result{type: "city"} = result) do
+    %City{
+      name: result.name,
+      c: result.c,
+      zmw: result.zmw,
+      tz: result.tz,
+      tzs: result.tzs,
+      l: result.l,
+      lat: result.lat,
+      lon: result.lon
+    }
+  end
+  defp specify_result(%Result{type: "hurricanes"} = result) do
+    %Hurricane{
+      name: result.name,
+      l: result.l,
+      date: result.date,
+      strmnum: result.strmnum,
+      basin: result.basin,
+      damage: result.damage
+    }
   end
 end
