@@ -93,10 +93,21 @@ defmodule Wunderground do
   ## Parameters
 
     - query: A `String` that represents a search query.
+    - options: defined in `Wunderground.Autocomplete`
 
-  ## Example
+  ## Examples
 
+      # without options
       {:ok, autocomplete} = Wunderground.autocomplete("San Fra")
+
+      # search only in Germany
+      {:ok, autocomplete} = Wunderground.autocomplete("Fra", [{:country, "DE"}])
+
+      # include Hurricanes
+      {:ok, autocomplete} = Wunderground.autocomplete("Arlen", [:with_hurricanes])
+
+      # include Hurricanes and exclude cities
+      {:ok, autocomplete} = Wunderground.autocomplete("Harvey", [:with_hurricanes, :without_cities])
 
   """
   @spec autocomplete(Query.t) :: {:ok, Autocomplete.t} | {:error, API.error}

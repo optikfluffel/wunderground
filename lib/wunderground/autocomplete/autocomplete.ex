@@ -19,6 +19,11 @@ defmodule Wunderground.Autocomplete do
     hurricanes: list(Hurricane.t)
   }
 
+  @doc """
+  Gets suggestions for autocompletion based on the given query.
+
+  *Isn't really intended to be used directly. Use `Wunderground.astronomy/1` instead.*
+  """
   @spec get(String.t, options) :: {:ok, __MODULE__.t} | {:error, API.error}
   def get(query, options \\ []) do
     query_with_options = Enum.reduce(options, query, &add_option_to_query/2)
