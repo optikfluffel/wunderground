@@ -1,17 +1,11 @@
 defmodule Wunderground.API.ResponseBody do
-  @moduledoc """
-  Ensures correct JSON encoding.
-  """
+  @moduledoc false
 
   @derive [Poison.Encoder]
 
   defstruct ~w(response forecast current_observation moon_phase almanac location)a
 
-  @typedoc """
-  The Wunderground.API.ResponseBody struct.
-
-  ## TODO: Example
-  """
+  @typedoc false
   @type t :: %__MODULE__{
     response: Wunderground.API.Response.t,
     forecast: Wunderground.Forecast.t,
