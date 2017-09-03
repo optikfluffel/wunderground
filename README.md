@@ -131,6 +131,12 @@ query = {:international, "Germany", "Berlin"}
 {:ok, autocomplete} = Wunderground.autocomplete("San Fra")
 ```
 
+also supports options, see [`Autocomplete.options`](https://hexdocs.pm/wunderground/Wunderground.Autocomplete.html#t:options/0) for details
+
+```elixir
+# search only in Germany
+{:ok, autocomplete} = Wunderground.autocomplete("Fra", [{:country, "DE"}])
+
 ## ☑️ TODOs
 
 -   [x] Geolookup
