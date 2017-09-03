@@ -3,8 +3,6 @@ defmodule Wunderground.API do
 
   use HTTPoison.Base
 
-  require Logger
-
   @type error_type :: :invalid_api_key | :not_found | :station_offline | :http_error | String.t
   @type error_message :: String.t
   @type error :: {error_type, error_message}

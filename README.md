@@ -20,7 +20,7 @@ Add `wunderground` to your list of dependencies in `mix.exs`:
 def deps do
   [
     # ...
-    {:wunderground, "~> 0.0.8"}
+    {:wunderground, "~> 0.0.9"}
   ]
 end
 ```
@@ -122,6 +122,13 @@ query = {:international, "Germany", "Berlin"}
 
 # or of a specific IP address
 {:auto_ip, {185, 1, 74, 1}}
+```
+
+### 🔎 Autocomplete
+
+```elixir
+# autocomplete suggestions for the given search query
+{:ok, autocomplete} = Wunderground.autocomplete("San Fra")
 ```
 
 ## ☑️ TODOs

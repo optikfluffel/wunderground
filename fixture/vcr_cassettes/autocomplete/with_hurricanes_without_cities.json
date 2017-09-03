@@ -1,0 +1,22 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "http://autocomplete.wunderground.com/aq"
+    },
+    "response": {
+      "body": "{ \"RESULTS\": [\n\t{\n\t\t\"name\": \"Harvey, Hurricane - Atlantic, 1993\", \n\t\t\"type\": \"hurricanes\", \n\t\t\"date\": \"9/18/1993\",\n\t\t\"strmnum\": \"8\",\n\t\t\"basin\": \"at\",\n\t\t\"damage\": \"0\",\n\t\t\"l\": \"/hurricane/at19938.asp\",\n\t\t\"start_epoch\": \"748393200\",\n\t\t\"end_epoch\": \"748652400\",\n\t\t\"sw_lat\": \"26.700001\",\n\t\t\"sw_lon\": \"-62.000000\",\n\t\t\"ne_lat\": \"46.000000\",\n\t\t\"ne_lon\": \"-42.000000\",\n\t\t\"maxcat\": \"1\"\n\t},\n\t{\n\t\t\"name\": \"Harvey, Major Hurricane - Atlantic, 1981\", \n\t\t\"type\": \"hurricanes\", \n\t\t\"date\": \"9/11/1981\",\n\t\t\"strmnum\": \"8\",\n\t\t\"basin\": \"at\",\n\t\t\"damage\": \"0\",\n\t\t\"l\": \"/hurricane/at19818.asp\",\n\t\t\"start_epoch\": \"369097200\",\n\t\t\"end_epoch\": \"369810000\",\n\t\t\"sw_lat\": \"14.000000\",\n\t\t\"sw_lon\": \"-62.799999\",\n\t\t\"ne_lat\": \"38.500000\",\n\t\t\"ne_lon\": \"-32.799999\",\n\t\t\"maxcat\": \"4\"\n\t},\n\t{\n\t\t\"name\": \"Harvey, Tropical Storm - Atlantic, 1999\", \n\t\t\"type\": \"hurricanes\", \n\t\t\"date\": \"9/19/1999\",\n\t\t\"strmnum\": \"8\",\n\t\t\"basin\": \"at\",\n\t\t\"damage\": \"15\",\n\t\t\"l\": \"/hurricane/at19998.asp\",\n\t\t\"start_epoch\": \"937738800\",\n\t\t\"end_epoch\": \"937976400\",\n\t\t\"sw_lat\": \"25.000000\",\n\t\t\"sw_lon\": \"-87.800003\",\n\t\t\"ne_lat\": \"27.100000\",\n\t\t\"ne_lon\": \"-78.599998\",\n\t\t\"maxcat\": \"0\"\n\t},\n\t{\n\t\t\"name\": \"Harvey, Tropical Storm - Atlantic, 2005\", \n\t\t\"type\": \"hurricanes\", \n\t\t\"date\": \"8/2/2005\",\n\t\t\"strmnum\": \"8\",\n\t\t\"basin\": \"at\",\n\t\t\"damage\": \"0\",\n\t\t\"l\": \"/hurricane/at20058.asp\",\n\t\t\"start_epoch\": \"1123023600\",\n\t\t\"end_epoch\": \"1123995600\",\n\t\t\"sw_lat\": \"28.200001\",\n\t\t\"sw_lon\": \"-68.800003\",\n\t\t\"ne_lat\": \"44.500000\",\n\t\t\"ne_lon\": \"-30.500000\",\n\t\t\"maxcat\": \"0\"\n\t},\n\t{\n\t\t\"name\": \"Harvey, Tropical Storm - Atlantic, 2011\", \n\t\t\"type\": \"hurricanes\", \n\t\t\"date\": \"-1/-1/2011\",\n\t\t\"strmnum\": \"8\",\n\t\t\"basin\": \"at\",\n\t\t\"damage\": \"0\",\n\t\t\"l\": \"/hurricane/at20118.asp\",\n\t\t\"start_epoch\": \"0\",\n\t\t\"end_epoch\": \"0\",\n\t\t\"sw_lat\": \"15.400000\",\n\t\t\"sw_lon\": \"-97.300003\",\n\t\t\"ne_lat\": \"19.000000\",\n\t\t\"ne_lon\": \"-82.099998\",\n\t\t\"maxcat\": \"0\"\n\t},\n\t{\n\t\t\"name\": \"Harvey, Tropical Storm - Atlantic, 2017\", \n\t\t\"type\": \"hurricanes\", \n\t\t\"date\": \"8/30/2017\",\n\t\t\"strmnum\": \"9\",\n\t\t\"basin\": \"at\",\n\t\t\"damage\": \"-1\",\n\t\t\"l\": \"/hurricane/at20179.asp\",\n\t\t\"start_epoch\": \"1504105200\",\n\t\t\"end_epoch\": \"1504148400\",\n\t\t\"sw_lat\": \"13.000000\",\n\t\t\"sw_lon\": \"-97.699997\",\n\t\t\"ne_lat\": \"31.700001\",\n\t\t\"ne_lon\": \"-54.099998\",\n\t\t\"maxcat\": \"-2\"\n\t}\n]\n}",
+      "headers": {
+        "Content-type": "application/json; charset=utf-8",
+        "Content-Length": "2224",
+        "Connection": "keep-alive"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

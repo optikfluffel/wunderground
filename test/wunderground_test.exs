@@ -5,6 +5,7 @@ defmodule WundergroundTest do
 
   alias Wunderground.Almanac
   alias Wunderground.Astronomy
+  alias Wunderground.Autocomplete
   alias Wunderground.Conditions
   alias Wunderground.Forecast
   alias Wunderground.Geolookup
@@ -36,6 +37,12 @@ defmodule WundergroundTest do
   test "geolookup/1" do
     use_cassette "geolookup/airport" do
       assert {:ok, %Geolookup{}} = Wunderground.geolookup({:airport, "KJFK"})
+    end
+  end
+
+  test "autocomplete/1" do
+    use_cassette "autocomplete/wunderground" do
+      assert {:ok, %Autocomplete{}} = Wunderground.autocomplete("Markgrafenh")
     end
   end
 end
