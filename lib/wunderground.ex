@@ -110,6 +110,6 @@ defmodule Wunderground do
       {:ok, autocomplete} = Wunderground.autocomplete("Harvey", [:with_hurricanes, :without_cities])
 
   """
-  @spec autocomplete(Query.t) :: {:ok, Autocomplete.t} | {:error, API.error}
-  defdelegate autocomplete(query), to: Autocomplete, as: :get
+  @spec autocomplete(String.t, Autocomplete.options) :: {:ok, Autocomplete.t} | {:error, API.error}
+  defdelegate autocomplete(query, options \\ []), to: Autocomplete, as: :get
 end
