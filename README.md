@@ -124,7 +124,7 @@ query = {:international, "Germany", "Berlin"}
 {:auto_ip, {185, 1, 74, 1}}
 ```
 
-### 🔎 Autocomplete
+## 🔎 Autocomplete
 
 ```elixir
 # autocomplete suggestions for the given search query
@@ -136,15 +136,7 @@ also supports options, see [`Autocomplete.options`](https://hexdocs.pm/wundergro
 ```elixir
 # search only in Germany
 {:ok, autocomplete} = Wunderground.autocomplete("Fra", [{:country, "DE"}])
-
-## ☑️ TODOs
-
--   [x] Geolookup
--   [ ] Autocomplete
--   [x] Current conditions
--   [x] 3-day forecast summary
--   [x] Astronomy
--   [x] Almanac for today
+```
 
 ---
 
