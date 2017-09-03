@@ -6,6 +6,7 @@ defmodule Wunderground do
   alias Wunderground.API
   alias Wunderground.Almanac
   alias Wunderground.Astronomy
+  alias Wunderground.Autocomplete
   alias Wunderground.Conditions
   alias Wunderground.Forecast
   alias Wunderground.Geolookup
@@ -85,4 +86,19 @@ defmodule Wunderground do
   """
   @spec geolookup(Query.t) :: {:ok, Geolookup.t} | {:error, API.error}
   defdelegate geolookup(query), to: Geolookup, as: :get
+
+  @doc """
+  🔎 Get's autocomplete suggestions for the given search query.
+
+  ## Parameters
+
+    - query: A `String` that represents a search query.
+
+  ## Example
+
+      {:ok, autocomplete} = Wunderground.autocomplete("San Fra")
+
+  """
+  @spec autocomplete(Query.t) :: {:ok, Autocomplete.t} | {:error, API.error}
+  defdelegate autocomplete(query), to: Autocomplete, as: :get
 end

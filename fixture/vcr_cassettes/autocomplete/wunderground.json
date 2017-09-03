@@ -1,0 +1,22 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "http://autocomplete.wunderground.com/aq"
+    },
+    "response": {
+      "body": "{ \"RESULTS\": [\n\t{\n\t\t\"name\": \"Markgrafenheide, Germany\", \n\t\t\"type\": \"city\", \n\t\t\"c\": \"DE\",\n\t\t\"zmw\": \"00000.41.10170\",\n\t\t\"tz\": \"Europe/Berlin\",\n\t\t\"tzs\": \"CEST\",\n\t\t\"l\": \"/q/zmw:00000.41.10170\",\n\t\t\"ll\": \"54.189999 12.140000\",\n\t\t\"lat\": \"54.189999\",\n\t\t\"lon\": \"12.140000\"\n\t}\n]\n}",
+      "headers": {
+        "Content-type": "application/json; charset=utf-8",
+        "Content-Length": "270",
+        "Connection": "keep-alive"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

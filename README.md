@@ -124,6 +124,13 @@ query = {:international, "Germany", "Berlin"}
 {:auto_ip, {185, 1, 74, 1}}
 ```
 
+### 🔎 Autocomplete
+
+```elixir
+# autocomplete suggestions for the given search query
+{:ok, autocomplete} = Wunderground.autocomplete("San Fra")
+```
+
 ## ☑️ TODOs
 
 -   [x] Geolookup
