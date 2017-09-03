@@ -7,12 +7,21 @@ defmodule Wunderground.AutocompleteTest do
   alias Wunderground.Autocomplete.City
   alias Wunderground.Autocomplete.Hurricane
 
-  test "city" do
+  test "default" do
     use_cassette "autocomplete/city" do
       assert {:ok, %Autocomplete{} = autocomplete} = Autocomplete.get("San Fra")
 
       assert length(autocomplete.cities) > 0
       assert %City{} = List.first(autocomplete.cities)
+    end
+  end
+
+  test "filter by country" do
+    use_cassette "autocomplete/filter_by_country" do
+      assert {:ok, %Autocomplete{} = autocomplete} = Autocomplete.get("Fra", [{:country, "DE"}])
+
+      assert length(autocomplete.cities) > 0
+      assert %City{c: "DE"} = List.first(autocomplete.cities)
     end
   end
 
