@@ -9,11 +9,20 @@ defmodule Wunderground.Autocomplete do
 
   defstruct ~w(cities hurricanes)a
 
+  @type option :: :without_cities | :with_hurricanes
+  @type options :: list(option)
+
   @type t :: %__MODULE__{
     cities: list(Wunderground.Autocomplete.Result.t),
     hurricanes: list(Wunderground.Autocomplete.Result.t)
   }
 
-  @spec get(String.t) :: {:ok, __MODULE__.t} | {:error, API.error}
-  def get(query), do: API.get_autocomplete(query)
+  @spec get(String.t, options) :: {:ok, __MODULE__.t} | {:error, API.error}
+  def get(query, options \\ []) do
+    query_with_options = Enum.reduce(options, query, &add_option_to_query/2)
+    API.get_autocomplete(query_with_options)
+  end
+
+  defp add_option_to_query(:without_cities, query), do: query <> "&cities=0"
+  defp add_option_to_query(:with_hurricanes, query), do: query <> "&h=1"
 end
